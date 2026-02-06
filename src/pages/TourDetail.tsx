@@ -246,9 +246,9 @@
                        Save ₹{(tour.original_price_inr - tour.discounted_price_inr).toLocaleString("en-IN")}
                      </span>
                    </div>
- 
-                   <a
-                     href={`https://wa.me/919830599553?text=Hi,%20I'm%20interested%20in%20the%20${encodeURIComponent(tour.title)}%20package`}
+
+                    <a
+                      href={`https://wa.me/919474025173?text=Hi,%20I'm%20interested%20in%20the%20${encodeURIComponent(tour.title)}%20package`}
                      target="_blank"
                      rel="noopener noreferrer"
                      className="block"

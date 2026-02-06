@@ -46,36 +46,36 @@
                  Reach out through any of the channels below, and we'll respond within 24 hours.
                </p>
  
-               <div className="space-y-6">
-                 <a
-                   href="https://wa.me/919830599553"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   className="flex items-start gap-4 p-4 bg-card rounded-xl card-shadow hover:bg-muted transition-colors"
-                 >
-                   <div className="w-12 h-12 bg-[#25D366]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                     <MessageCircle className="w-6 h-6 text-[#25D366]" />
-                   </div>
-                   <div>
-                     <h3 className="font-semibold text-foreground">WhatsApp</h3>
-                     <p className="text-muted-foreground">+91 9830599553</p>
-                     <p className="text-sm text-primary mt-1">Click to chat now →</p>
-                   </div>
-                 </a>
- 
-                 <a
-                   href="tel:+919830599553"
-                   className="flex items-start gap-4 p-4 bg-card rounded-xl card-shadow hover:bg-muted transition-colors"
-                 >
-                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                     <Phone className="w-6 h-6 text-primary" />
-                   </div>
-                   <div>
-                     <h3 className="font-semibold text-foreground">Phone</h3>
-                     <p className="text-muted-foreground">+91 9830599553</p>
-                     <p className="text-sm text-primary mt-1">Call us anytime →</p>
-                   </div>
-                 </a>
+                <div className="space-y-6">
+                  <a
+                    href="https://wa.me/919474025173"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-4 p-4 bg-card rounded-xl card-shadow hover:bg-muted transition-colors"
+                  >
+                    <div className="w-12 h-12 bg-[#25D366]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <MessageCircle className="w-6 h-6 text-[#25D366]" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground">WhatsApp</h3>
+                      <p className="text-muted-foreground">+91 9474025173</p>
+                      <p className="text-sm text-primary mt-1">Click to chat now →</p>
+                    </div>
+                  </a>
+
+                  <a
+                    href="tel:+919474025173"
+                    className="flex items-start gap-4 p-4 bg-card rounded-xl card-shadow hover:bg-muted transition-colors"
+                  >
+                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground">Phone</h3>
+                      <p className="text-muted-foreground">+91 9474025173</p>
+                      <p className="text-sm text-primary mt-1">Call us anytime →</p>
+                    </div>
+                  </a>
  
                  <a
                    href="mailto:sovainternetcafe@gmail.com"
@@ -91,25 +91,25 @@
                    </div>
                  </a>
  
-                 <div className="flex items-start gap-4 p-4 bg-card rounded-xl card-shadow">
-                   <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                     <MapPin className="w-6 h-6 text-accent" />
-                   </div>
-                   <div>
-                     <h3 className="font-semibold text-foreground">Office Location</h3>
-                     <p className="text-muted-foreground">Kolkata, West Bengal, India</p>
-                     <p className="text-sm text-muted-foreground mt-1">All tours depart from Kolkata</p>
-                   </div>
-                 </div>
-               </div>
- 
-               {/* Map Placeholder */}
-               <div className="mt-8 bg-muted rounded-xl h-64 flex items-center justify-center">
-                 <div className="text-center">
-                   <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-2" />
-                   <p className="text-muted-foreground">Kolkata, West Bengal</p>
-                 </div>
-               </div>
+                  <div className="flex items-start gap-4 p-4 bg-card rounded-xl card-shadow">
+                    <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-6 h-6 text-accent" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground">Office Location</h3>
+                      <p className="text-muted-foreground">MNK Road, Bharsala More, Rampurhat, West Bengal 731224</p>
+                      <p className="text-sm text-muted-foreground mt-1">Tours available from Rampurhat & Kolkata</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Map Placeholder */}
+                <div className="mt-8 bg-muted rounded-xl h-64 flex items-center justify-center">
+                  <div className="text-center">
+                    <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-2" />
+                    <p className="text-muted-foreground">Rampurhat, West Bengal 731224</p>
+                  </div>
+                </div>
              </motion.div>
  
              {/* Contact Form */}

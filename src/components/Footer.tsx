@@ -11,23 +11,18 @@
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
            {/* Brand */}
            <div className="lg:col-span-1">
-             <div className="flex items-center gap-2 mb-4">
-               <div className="w-10 h-10 bg-gradient-hero rounded-xl flex items-center justify-center">
-                 <span className="text-primary-foreground font-bold text-lg">S</span>
-               </div>
-               <div>
-                 <span className="font-display font-bold text-lg text-background">
-                   Sova Tours
-                 </span>
-                 <span className="block text-xs text-background/70 -mt-1">
-                   & Travels
-                 </span>
-               </div>
-             </div>
-             <p className="text-background/70 text-sm leading-relaxed mb-4">
-               Your trusted partner for budget-friendly domestic tours from Kolkata. 
-               Explore India with us!
-             </p>
+            <div className="flex items-center gap-2 mb-4">
+                <div className="w-10 h-10 bg-gradient-hero rounded-xl flex items-center justify-center">
+                  <span className="text-primary-foreground font-bold text-lg">S</span>
+                </div>
+                <span className="font-display font-bold text-lg text-background">
+                  Sova Tours & Travels
+                </span>
+              </div>
+              <p className="text-background/70 text-sm leading-relaxed mb-4">
+                Your trusted partner for budget-friendly domestic tours and Hajj/Umrah pilgrimages from Rampurhat. 
+                Explore India and beyond with us!
+              </p>
              <div className="flex gap-4">
                <a href="#" className="text-background/60 hover:text-secondary transition-colors">
                  <Facebook className="w-5 h-5" />
@@ -98,26 +93,26 @@
            {/* Contact Info */}
            <div>
              <h4 className="font-display font-semibold text-background mb-4">Contact Us</h4>
-             <ul className="space-y-3">
-               <li className="flex items-start gap-3">
-                 <MapPin className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
-                 <span className="text-background/70 text-sm">
-                   Kolkata, West Bengal, India
-                 </span>
-               </li>
-               <li className="flex items-center gap-3">
-                 <Phone className="w-4 h-4 text-secondary flex-shrink-0" />
-                 <a href="tel:+919830599553" className="text-background/70 hover:text-secondary text-sm transition-colors">
-                   +91 9830599553
-                 </a>
-               </li>
-               <li className="flex items-center gap-3">
-                 <Mail className="w-4 h-4 text-secondary flex-shrink-0" />
-                 <a href="mailto:sovainternetcafe@gmail.com" className="text-background/70 hover:text-secondary text-sm transition-colors">
-                   sovainternetcafe@gmail.com
-                 </a>
-               </li>
-             </ul>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <MapPin className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-background/70 text-sm">
+                    MNK Road, Bharsala More, Rampurhat, West Bengal 731224
+                  </span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Phone className="w-4 h-4 text-secondary flex-shrink-0" />
+                  <a href="tel:+919474025173" className="text-background/70 hover:text-secondary text-sm transition-colors">
+                    +91 9474025173
+                  </a>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Mail className="w-4 h-4 text-secondary flex-shrink-0" />
+                  <a href="mailto:sovainternetcafe@gmail.com" className="text-background/70 hover:text-secondary text-sm transition-colors">
+                    sovainternetcafe@gmail.com
+                  </a>
+                </li>
+              </ul>
            </div>
          </div>
  
