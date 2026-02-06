@@ -87,7 +87,7 @@ const Index = () => {
                   <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>
-              <a href="https://wa.me/919830599553" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/919474025173" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-foreground font-semibold text-lg px-8">
                   <Phone className="w-5 h-5 mr-2" />
                   WhatsApp Now
@@ -297,7 +297,7 @@ const Index = () => {
               Contact us for a custom quote tailored to your travel preferences and budget.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://wa.me/919830599553" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/919474025173" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="bg-gradient-sunset hover:opacity-90 text-secondary-foreground font-semibold gap-2">
                   <Phone className="w-5 h-5" />
                   Get Custom Quote

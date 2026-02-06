@@ -45,8 +45,8 @@
  
            {/* CTA Button */}
            <div className="hidden md:flex items-center gap-4">
-             <a
-               href="https://wa.me/919830599553"
+              <a
+                href="https://wa.me/919474025173"
                target="_blank"
                rel="noopener noreferrer"
              >
@@ -95,8 +95,8 @@
                      {link.label}
                    </Link>
                  ))}
-                 <a
-                   href="https://wa.me/919830599553"
+                  <a
+                    href="https://wa.me/919474025173"
                    target="_blank"
                    rel="noopener noreferrer"
                    className="mt-2"
