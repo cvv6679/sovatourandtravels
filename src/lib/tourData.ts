@@ -1,14 +1,16 @@
- import tourKashmir from "@/assets/tour-kashmir.jpg";
- import tourLadakh from "@/assets/tour-ladakh.jpg";
- import tourDarjeeling from "@/assets/tour-darjeeling.jpg";
- import tourSundarban from "@/assets/tour-sundarban.jpg";
- import tourShimla from "@/assets/tour-shimla.jpg";
- import tourPuri from "@/assets/tour-puri.jpg";
- import tourRishikesh from "@/assets/tour-rishikesh.jpg";
- import tourGangtok from "@/assets/tour-gangtok.jpg";
- import tourKedarnath from "@/assets/tour-kedarnath.jpg";
- import tourDelhi from "@/assets/tour-delhi.jpg";
- import tourAgra from "@/assets/tour-agra.jpg";
+import tourKashmir from "@/assets/tour-kashmir.jpg";
+import tourLadakh from "@/assets/tour-ladakh.jpg";
+import tourDarjeeling from "@/assets/tour-darjeeling.jpg";
+import tourSundarban from "@/assets/tour-sundarban.jpg";
+import tourShimla from "@/assets/tour-shimla.jpg";
+import tourPuri from "@/assets/tour-puri.jpg";
+import tourRishikesh from "@/assets/tour-rishikesh.jpg";
+import tourGangtok from "@/assets/tour-gangtok.jpg";
+import tourKedarnath from "@/assets/tour-kedarnath.jpg";
+import tourDelhi from "@/assets/tour-delhi.jpg";
+import tourAgra from "@/assets/tour-agra.jpg";
+import tourUmrah from "@/assets/tour-umrah.jpg";
+import tourHajj from "@/assets/tour-hajj.jpg";
  
  export interface TourData {
    title: string;
@@ -310,14 +312,89 @@
      itinerary: [
        { day_number: 1, title: "Kolkata to Agra", description: "Arrive in Agra. Visit Taj Mahal at sunrise (or afternoon). Explore Agra Fort and Mehtab Bagh for sunset Taj view." },
        { day_number: 2, title: "Departure", description: "Optional: Early morning Taj Mahal revisit. After breakfast, visit Fatehpur Sikri. Transfer to station for return to Kolkata." }
-     ]
-   }
- ];
+      ]
+    },
+    {
+    title: "Umrah Pilgrimage Package",
+    slug: "umrah-pilgrimage-package",
+    destination: "Mecca-Medina",
+    duration_days: 10,
+    start_city: "Kolkata",
+    category: "Pilgrimage",
+    best_season: "Year Round (avoid Hajj season)",
+    original_price_inr: 125000,
+    discounted_price_inr: 99999,
+    overview: "Embark on a blessed journey to the holy cities of Mecca and Medina for Umrah. Experience the spiritual serenity of Masjid al-Haram, perform Tawaf around the Kaaba, and visit the Prophet's Mosque in Medina.",
+    inclusions: ["Return flights from Kolkata", "Umrah visa processing", "9 nights hotel accommodation (5 star near Haram)", "Daily breakfast & dinner", "Airport transfers", "Ziyarat tours in Mecca & Medina", "Zamzam water (5L per person)", "Experienced religious guide"],
+    exclusions: ["Lunch", "Personal expenses", "Ihram clothing", "Tips", "Extra Ziyarat", "Travel insurance"],
+    transport: "Flight + AC Bus",
+    hotel_type: "5 Star Near Haram",
+    hero_image_url: tourUmrah,
+    gallery_images: [tourUmrah],
+    is_featured: true,
+    itinerary: [
+      { day_number: 1, title: "Departure from Kolkata", description: "Depart from Kolkata airport. Arrive in Jeddah. Immigration and transfer to Mecca by AC bus. Check-in to hotel near Masjid al-Haram." },
+      { day_number: 2, title: "Umrah Performance", description: "After Fajr, perform Umrah rituals - Tawaf (7 rounds around Kaaba), Sa'i (walking between Safa and Marwa), and Halq/Taqsir. Rest and prayers at Haram." },
+      { day_number: 3, title: "Prayers at Masjid al-Haram", description: "Full day for prayers at Masjid al-Haram. Spend time in ibadah near the Holy Kaaba. Optional: Visit Jabal al-Nour (Mount of Light)." },
+      { day_number: 4, title: "Mecca Ziyarat", description: "Visit historical sites in Mecca - Jabal al-Rahma, Muzdalifah, Mina, and the site of Jamarat. Learn about Hajj rituals for future reference." },
+      { day_number: 5, title: "Mecca to Medina", description: "After Fajr prayers, check out and travel to Medina by AC bus. Check-in to hotel near Masjid an-Nabawi. Evening prayers at the Prophet's Mosque." },
+      { day_number: 6, title: "Masjid an-Nabawi", description: "Offer prayers at Masjid an-Nabawi. Visit Riyad ul-Jannah (Garden of Paradise). Pay respects at the Prophet's grave and his companions." },
+      { day_number: 7, title: "Medina Ziyarat", description: "Visit Masjid Quba (first mosque in Islam), Masjid Qiblatain, Uhud Mountain and martyrs' cemetery, and the Seven Mosques." },
+      { day_number: 8, title: "Prayers & Shopping", description: "Morning prayers at Masjid an-Nabawi. Free time for shopping - dates, prayer beads, Islamic books, perfumes. Evening prayers at Haram." },
+      { day_number: 9, title: "Return to Mecca", description: "Travel back to Mecca. Perform additional Umrah if desired. Final Tawaf and prayers at Masjid al-Haram. Collect Zamzam water." },
+      { day_number: 10, title: "Departure", description: "After Fajr prayers, transfer to Jeddah airport for return flight to Kolkata. Umrah journey complete with blessed memories." }
+    ]
+  },
+  {
+    title: "Hajj Pilgrimage Package",
+    slug: "hajj-pilgrimage-package",
+    destination: "Mecca-Medina-Mina-Arafat",
+    duration_days: 21,
+    start_city: "Kolkata",
+    category: "Pilgrimage",
+    best_season: "Dhul Hijjah (Islamic Calendar)",
+    original_price_inr: 450000,
+    discounted_price_inr: 399999,
+    overview: "Complete your fifth pillar of Islam with our comprehensive Hajj package. Experience the once-in-a-lifetime journey to Mecca, perform all Hajj rituals at Mina, Arafat, and Muzdalifah, and attain spiritual purification.",
+    inclusions: ["Return flights from Kolkata", "Hajj visa processing", "20 nights accommodation", "All meals during Hajj days", "Mina tent accommodation (AC)", "Transportation for all Hajj rituals", "Qurbani (sacrifice)", "Zamzam water", "Experienced Hajj guide & Muallim", "Medical support"],
+    exclusions: ["Personal expenses", "Ihram clothing", "Extra Qurbani", "Tips", "Travel insurance", "Phone/SIM card"],
+    transport: "Flight + AC Bus",
+    hotel_type: "5 Star + Mina Tents",
+    hero_image_url: tourHajj,
+    gallery_images: [tourHajj],
+    is_featured: true,
+    itinerary: [
+      { day_number: 1, title: "Departure from Kolkata", description: "Depart from Kolkata airport with Hajj group. Recite Talbiyah upon departure. Flight to Jeddah, Saudi Arabia." },
+      { day_number: 2, title: "Arrival in Jeddah", description: "Arrive at Jeddah Hajj Terminal. Immigration and documentation. Transfer to Mecca by AC bus. Check-in to hotel near Haram." },
+      { day_number: 3, title: "Umrah Performance", description: "Perform Umrah - Tawaf around Kaaba and Sa'i between Safa and Marwa. Change from Ihram to regular clothes. Rest and prayers." },
+      { day_number: 4, title: "Mecca Stay - Day 1", description: "Prayers at Masjid al-Haram. Attend Hajj orientation session. Learn about upcoming rituals and their significance." },
+      { day_number: 5, title: "Mecca Stay - Day 2", description: "Continue prayers and ibadah at Haram. Optional visit to historical sites in Mecca. Prepare for Hajj rituals." },
+      { day_number: 6, title: "Mecca Stay - Day 3", description: "Final day in Mecca hotel. Collect essentials for Hajj days. Evening preparation and early rest." },
+      { day_number: 7, title: "8th Dhul Hijjah - Mina", description: "Wear Ihram and make intention for Hajj. Travel to Mina. Spend day and night in Mina tents. Perform Dhuhr, Asr, Maghrib, Isha, and Fajr prayers." },
+      { day_number: 8, title: "9th Dhul Hijjah - Arafat", description: "Day of Arafat - the most important day of Hajj. Travel to Arafat after Fajr. Stand at Arafat (Wuquf) until sunset. Make dua and seek forgiveness. After sunset, travel to Muzdalifah." },
+      { day_number: 9, title: "10th Dhul Hijjah - Eid", description: "Collect pebbles at Muzdalifah. Travel to Mina. Perform Rami (stoning of Jamarat al-Aqaba). Qurbani (sacrifice). Halq/Taqsir. Return to Mecca for Tawaf al-Ifadah and Sa'i. Return to Mina." },
+      { day_number: 10, title: "11th Dhul Hijjah - Mina", description: "Days of Tashreeq begin. Perform Rami of all three Jamarat after Dhuhr. Rest in Mina tents. Prayers and remembrance of Allah." },
+      { day_number: 11, title: "12th Dhul Hijjah - Mina", description: "Perform Rami of all three Jamarat. Option to leave Mina before sunset or stay for 13th. Most pilgrims return to Mecca hotel." },
+      { day_number: 12, title: "Mecca - Post Hajj", description: "Rest day in Mecca. Recovery from Hajj rituals. Prayers at Masjid al-Haram. Congratulations - Hajj is complete!" },
+      { day_number: 13, title: "Mecca Stay", description: "Continue prayers at Haram. Shopping for gifts and souvenirs. Visit Makkah Mall if desired." },
+      { day_number: 14, title: "Travel to Medina", description: "Check out from Mecca hotel. Travel to Medina by AC bus (approx 5 hours). Check-in to hotel near Masjid an-Nabawi." },
+      { day_number: 15, title: "Masjid an-Nabawi - Day 1", description: "Prayers at the Prophet's Mosque. Visit Riyad ul-Jannah. Pay respects at the Prophet's grave (Rawdah)." },
+      { day_number: 16, title: "Medina Ziyarat", description: "Visit Masjid Quba, Masjid Qiblatain, Uhud Mountain and Shuhada (martyrs), and the Seven Mosques." },
+      { day_number: 17, title: "Masjid an-Nabawi - Day 2", description: "Continue prayers at Prophet's Mosque. Free time for personal ibadah and reflection on the Hajj journey." },
+      { day_number: 18, title: "Medina Stay", description: "Final full day in Medina. Shopping at local markets - dates, prayer items, Islamic goods. Farewell prayers at Haram." },
+      { day_number: 19, title: "Travel to Jeddah", description: "After Fajr, travel to Jeddah. Free time for rest or shopping. Prepare for departure." },
+      { day_number: 20, title: "Departure", description: "Transfer to Jeddah airport. Final Talbiyah and duas. Board flight to Kolkata." },
+      { day_number: 21, title: "Arrival in Kolkata", description: "Arrive in Kolkata as Hajji/Hajjah. Return home with the blessed completion of the fifth pillar of Islam. Hajj Mabroor!" }
+    ]
+  }
+];
  
- export const testimonialData = [
-   { name: "Rajesh Kumar", rating: 5, text: "Amazing Kashmir trip! Everything was perfectly organized. The houseboat experience was unforgettable.", destination: "Kashmir" },
-   { name: "Priya Sharma", rating: 5, text: "Best Ladakh trip ever! The team took care of everything including acclimatization. Highly recommended.", destination: "Ladakh" },
-   { name: "Amit Banerjee", rating: 5, text: "Sundarban safari was thrilling! We spotted a tiger on the second day. Great guides and comfortable stay.", destination: "Sundarban" },
-   { name: "Sneha Das", rating: 4, text: "Beautiful Darjeeling trip with family. The toy train ride was the highlight for kids. Good budget package.", destination: "Darjeeling" },
-   { name: "Vikram Singh", rating: 5, text: "Kedarnath pilgrimage was well organized. The team handled everything from permits to accommodation.", destination: "Kedarnath" }
- ];
+export const testimonialData = [
+  { name: "Rajesh Kumar", rating: 5, text: "Amazing Kashmir trip! Everything was perfectly organized. The houseboat experience was unforgettable.", destination: "Kashmir" },
+  { name: "Priya Sharma", rating: 5, text: "Best Ladakh trip ever! The team took care of everything including acclimatization. Highly recommended.", destination: "Ladakh" },
+  { name: "Amit Banerjee", rating: 5, text: "Sundarban safari was thrilling! We spotted a tiger on the second day. Great guides and comfortable stay.", destination: "Sundarban" },
+  { name: "Sneha Das", rating: 4, text: "Beautiful Darjeeling trip with family. The toy train ride was the highlight for kids. Good budget package.", destination: "Darjeeling" },
+  { name: "Vikram Singh", rating: 5, text: "Kedarnath pilgrimage was well organized. The team handled everything from permits to accommodation.", destination: "Kedarnath" },
+  { name: "Mohammed Iqbal", rating: 5, text: "Alhamdulillah! The Umrah package was excellent. Hotels near Haram, experienced guide, and smooth visa processing.", destination: "Umrah" },
+  { name: "Fatima Begum", rating: 5, text: "Our Hajj journey was blessed. Sova Tours handled everything professionally. The guides were knowledgeable and caring.", destination: "Hajj" }
+];
