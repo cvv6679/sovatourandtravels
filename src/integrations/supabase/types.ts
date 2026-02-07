@@ -24,6 +24,7 @@ export type Database = {
           name: string
           phone: string
           preferred_date: string | null
+          status: string | null
           tour_id: string | null
           travellers: number | null
         }
@@ -36,6 +37,7 @@ export type Database = {
           name: string
           phone: string
           preferred_date?: string | null
+          status?: string | null
           tour_id?: string | null
           travellers?: number | null
         }
@@ -48,6 +50,7 @@ export type Database = {
           name?: string
           phone?: string
           preferred_date?: string | null
+          status?: string | null
           tour_id?: string | null
           travellers?: number | null
         }
@@ -252,6 +255,8 @@ export type Database = {
         }
         Returns: boolean
       }
+      is_any_admin: { Args: { _user_id: string }; Returns: boolean }
+      is_super_or_admin: { Args: { _user_id: string }; Returns: boolean }
     }
     Enums: {
       app_role: "admin" | "user" | "super_admin" | "moderator"

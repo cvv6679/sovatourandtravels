@@ -386,9 +386,116 @@ import tourHajj from "@/assets/tour-hajj.jpg";
       { day_number: 20, title: "Departure", description: "Transfer to Jeddah airport. Final Talbiyah and duas. Board flight to Kolkata." },
       { day_number: 21, title: "Arrival in Kolkata", description: "Arrive in Kolkata as Hajji/Hajjah. Return home with the blessed completion of the fifth pillar of Islam. Hajj Mabroor!" }
     ]
+  },
+  // International Tours
+  {
+    title: "Dubai Dazzle Package",
+    slug: "dubai-dazzle-package",
+    destination: "Dubai",
+    duration_days: 5,
+    start_city: "Kolkata",
+    category: "International",
+    best_season: "October to April",
+    original_price_inr: 55000,
+    discounted_price_inr: 45999,
+    overview: "Experience the glamour of Dubai with visits to the iconic Burj Khalifa, desert safari, shopping at Dubai Mall, and stunning city tours of this futuristic metropolis.",
+    inclusions: ["Return flights from Kolkata", "4 nights hotel stay", "Daily breakfast", "Desert safari with BBQ dinner", "Burj Khalifa entry (124th floor)", "Dubai city tour", "Dhow cruise dinner", "Airport transfers"],
+    exclusions: ["Lunch & other meals", "Visa fees", "Travel insurance", "Personal expenses", "Tips"],
+    transport: "Flight + AC Coach",
+    hotel_type: "4 Star",
+    hero_image_url: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800",
+    gallery_images: ["https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800"],
+    is_featured: true,
+    itinerary: [
+      { day_number: 1, title: "Arrival in Dubai", description: "Arrive at Dubai airport. Transfer to hotel. Evening free for leisure at JBR Beach or Dubai Marina walk." },
+      { day_number: 2, title: "Dubai City Tour", description: "Full day city tour - Dubai Museum, Gold Souk, Spice Souk, Palm Jumeirah, Atlantis photo stop. Evening Dhow cruise dinner on Dubai Creek." },
+      { day_number: 3, title: "Burj Khalifa & Mall", description: "Morning at leisure. Afternoon visit to Dubai Mall and Burj Khalifa observation deck at sunset. Watch the Dubai Fountain show." },
+      { day_number: 4, title: "Desert Safari", description: "Morning free for shopping. Afternoon desert safari with dune bashing, camel ride, sandboarding, and BBQ dinner with belly dance show." },
+      { day_number: 5, title: "Departure", description: "After breakfast, check out and transfer to Dubai airport for return flight to Kolkata." }
+    ]
+  },
+  {
+    title: "Nepal Himalayan Escape",
+    slug: "nepal-himalayan-escape",
+    destination: "Nepal",
+    duration_days: 6,
+    start_city: "Kolkata",
+    category: "International",
+    best_season: "September to May",
+    original_price_inr: 28000,
+    discounted_price_inr: 22999,
+    overview: "Explore the mystical land of Nepal with Kathmandu's ancient temples, Pokhara's stunning lakes, and breathtaking Himalayan views including glimpses of Mount Everest.",
+    inclusions: ["Return flights from Kolkata", "5 nights hotel stay", "Daily breakfast", "Kathmandu sightseeing", "Pokhara tour", "Mountain flight (subject to weather)", "All transfers"],
+    exclusions: ["Lunch & dinner", "Nepal visa on arrival", "Monument entry fees", "Personal expenses", "Tips"],
+    transport: "Flight + Private Vehicle",
+    hotel_type: "Standard",
+    hero_image_url: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800",
+    gallery_images: ["https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800"],
+    is_featured: true,
+    itinerary: [
+      { day_number: 1, title: "Arrival in Kathmandu", description: "Arrive at Tribhuvan airport. Transfer to hotel. Evening walk at Thamel, the tourist hub of Kathmandu." },
+      { day_number: 2, title: "Kathmandu Sightseeing", description: "Visit Pashupatinath Temple, Boudhanath Stupa, Swayambhunath (Monkey Temple), and Kathmandu Durbar Square." },
+      { day_number: 3, title: "Drive to Pokhara", description: "Scenic drive to Pokhara (6-7 hours) along the Trishuli River. Arrive and relax by Phewa Lake. Evening boat ride." },
+      { day_number: 4, title: "Pokhara Exploration", description: "Early morning visit to Sarangkot for sunrise over the Annapurna range. Visit World Peace Pagoda, Devi's Fall, and Gupteshwor Cave." },
+      { day_number: 5, title: "Return to Kathmandu", description: "Morning free in Pokhara. Drive back to Kathmandu. Evening shopping for souvenirs at local markets." },
+      { day_number: 6, title: "Departure", description: "Early morning mountain flight for Everest view (optional). After breakfast, transfer to airport for return flight to Kolkata." }
+    ]
+  },
+  {
+    title: "Bhutan Thunder Dragon",
+    slug: "bhutan-thunder-dragon",
+    destination: "Bhutan",
+    duration_days: 5,
+    start_city: "Kolkata",
+    category: "International",
+    best_season: "March to May, September to November",
+    original_price_inr: 45000,
+    discounted_price_inr: 38999,
+    overview: "Discover the Land of the Thunder Dragon with its pristine Buddhist monasteries, the iconic Tiger's Nest, stunning Himalayan landscapes, and the world's only carbon-negative country.",
+    inclusions: ["Return flights from Kolkata to Paro", "4 nights hotel stay", "All meals", "Licensed Bhutanese guide", "All entry permits", "Tiger's Nest hike", "Monument fees", "All transfers"],
+    exclusions: ["Travel insurance", "Personal expenses", "Tips", "Beverages", "Optional activities"],
+    transport: "Flight + Private Vehicle",
+    hotel_type: "3 Star",
+    hero_image_url: "https://images.unsplash.com/photo-1553856622-d1b352e24a82?w=800",
+    gallery_images: ["https://images.unsplash.com/photo-1553856622-d1b352e24a82?w=800"],
+    is_featured: true,
+    itinerary: [
+      { day_number: 1, title: "Arrival in Paro", description: "Scenic flight to Paro with Himalayan views. Transfer to Thimphu. Visit Buddha Dordenma statue. Evening at Thimphu market." },
+      { day_number: 2, title: "Thimphu Sightseeing", description: "Visit Tashichho Dzong, National Memorial Chorten, Folk Heritage Museum, and Handicrafts Emporium. Watch traditional paper making." },
+      { day_number: 3, title: "Thimphu to Punakha", description: "Cross Dochula Pass (3100m) with 108 stupas. Visit Punakha Dzong - the most beautiful dzong. Suspension bridge walk." },
+      { day_number: 4, title: "Punakha to Paro", description: "Drive back to Paro. Visit Paro Dzong and National Museum. Evening walk through Paro town and market." },
+      { day_number: 5, title: "Tiger's Nest & Departure", description: "Early morning hike to Taktsang Monastery (Tiger's Nest) - Bhutan's most iconic site. After lunch, transfer to airport for return flight." }
+    ]
+  },
+  {
+    title: "Bangkok & Pattaya Fun",
+    slug: "bangkok-pattaya-fun",
+    destination: "Bangkok-Pattaya",
+    duration_days: 6,
+    start_city: "Kolkata",
+    category: "International",
+    best_season: "November to February",
+    original_price_inr: 35000,
+    discounted_price_inr: 29999,
+    overview: "Experience the best of Thailand with vibrant Bangkok temples, exciting Pattaya beaches, thrilling Coral Island, and world-famous Thai hospitality and cuisine.",
+    inclusions: ["Return flights from Kolkata", "5 nights hotel stay", "Daily breakfast", "Bangkok city tour", "Coral Island tour with lunch", "Alcazar show", "All transfers"],
+    exclusions: ["Lunch & dinner (except Coral Island)", "Thailand visa", "Travel insurance", "Personal expenses", "Tips", "Optional tours"],
+    transport: "Flight + AC Coach",
+    hotel_type: "3 Star",
+    hero_image_url: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800",
+    gallery_images: ["https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800"],
+    is_featured: false,
+    itinerary: [
+      { day_number: 1, title: "Arrival in Bangkok", description: "Arrive at Suvarnabhumi airport. Transfer to hotel. Evening free for exploring nearby areas or night market." },
+      { day_number: 2, title: "Bangkok City Tour", description: "Visit Grand Palace, Wat Pho (Reclining Buddha), and Wat Arun. Afternoon at Chatuchak or Terminal 21 mall." },
+      { day_number: 3, title: "Bangkok to Pattaya", description: "Drive to Pattaya (2 hours). Check-in to hotel. Evening at Walking Street or Pattaya beach." },
+      { day_number: 4, title: "Coral Island Tour", description: "Full day Coral Island (Koh Larn) tour with speedboat, water sports, and seafood lunch. Evening Alcazar cabaret show." },
+      { day_number: 5, title: "Pattaya Leisure", description: "Morning at leisure. Optional: Nong Nooch Garden, Art in Paradise, or Floating Market. Drive back to Bangkok." },
+      { day_number: 6, title: "Departure", description: "After breakfast, transfer to Bangkok airport for return flight to Kolkata." }
+    ]
   }
 ];
- 
+
 export const testimonialData = [
   { name: "Rajesh Kumar", rating: 5, text: "Amazing Kashmir trip! Everything was perfectly organized. The houseboat experience was unforgettable.", destination: "Kashmir" },
   { name: "Priya Sharma", rating: 5, text: "Best Ladakh trip ever! The team took care of everything including acclimatization. Highly recommended.", destination: "Ladakh" },
