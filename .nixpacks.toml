@@ -1,3 +1,6 @@
+[providers]
+node = true
+
 [phases.setup]
 nixPkgs = ["nodejs_22"]
 
@@ -8,26 +11,4 @@ cmds = ["npm install"]
 cmds = ["npm run build"]
 
 [start]
-cmd = "npm run preview"
-[phases.setup]
-nixPkgs = ["nodejs_22", "npm"]
-
-[phases.install]
-cmds = ["npm install"]
-
-[phases.build]
-cmds = ["npm run build"]
-
-[start]
-cmd = "npx serve -s dist -l 3000"[providers]
-node = true
-
-[phases.install]
-cmds = ["npm install"]
-
-[phases.build]
-cmds = ["npm run build"]
-
-[start]
 cmd = "npx serve -s dist -l 3000"
-
