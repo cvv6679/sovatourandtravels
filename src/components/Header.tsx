@@ -11,30 +11,26 @@ import {
 import Logo from "./Logo";
 import { motion, AnimatePresence } from "framer-motion";
 
-const internationalDestinations = [
-  "Dubai",
-  "Nepal",
-  "Bhutan",
-  "Bangkok & Pattaya",
-  "Malaysia",
-  "Vietnam",
-  "Bali",
-  "Sri Lanka",
-];
-
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/packages", label: "Packages" },
-    { href: "/international", label: "International Trips", hasDropdown: true },
+    { href: "/packages", label: "All Packages" },
+    { href: "/packages?category=domestic", label: "Domestic Trips" },
+    { href: "/packages?category=international", label: "International Trips" },
+    { href: "/packages?category=pilgrimage", label: "Pilgrim Trips" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => {
+    if (path.includes("?")) {
+      return location.pathname + location.search === path;
+    }
+    return location.pathname === path && !location.search;
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
@@ -45,47 +41,65 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              link.hasDropdown ? (
-                <DropdownMenu key={link.href}>
-                  <DropdownMenuTrigger className={`text-sm font-bold transition-colors hover:text-primary flex items-center gap-1 ${
-                    isActive(link.href) || location.pathname.startsWith("/international")
-                      ? "text-primary"
-                      : "text-foreground"
-                  }`}>
-                    {link.label}
-                    <ChevronDown className="w-4 h-4" />
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start" className="w-48">
-                    <DropdownMenuItem asChild>
-                      <Link to="/international" className="font-medium">
-                        All Destinations
-                      </Link>
-                    </DropdownMenuItem>
-                    {internationalDestinations.map((dest) => (
-                      <DropdownMenuItem key={dest} asChild>
-                        <Link to={`/international?destination=${dest.toLowerCase().split(" ")[0]}`}>
-                          {dest}
-                        </Link>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              ) : (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={`text-sm font-bold transition-colors hover:text-primary ${
-                    isActive(link.href)
-                      ? "text-primary"
-                      : "text-foreground"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              )
-            ))}
+          <nav className="hidden lg:flex items-center gap-6">
+            <Link
+              to="/"
+              className={`text-sm font-bold transition-colors hover:text-primary ${
+                isActive("/") ? "text-primary" : "text-foreground"
+              }`}
+            >
+              Home
+            </Link>
+
+            {/* Packages Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger className={`text-sm font-bold transition-colors hover:text-primary flex items-center gap-1 ${
+                location.pathname === "/packages" ? "text-primary" : "text-foreground"
+              }`}>
+                Packages
+                <ChevronDown className="w-4 h-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-48">
+                <DropdownMenuItem asChild>
+                  <Link to="/packages" className="font-medium">
+                    All Packages
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/packages?category=domestic">
+                    Domestic Trips
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/packages?category=international">
+                    International Trips
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/packages?category=pilgrimage">
+                    Pilgrim Trips
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <Link
+              to="/about"
+              className={`text-sm font-bold transition-colors hover:text-primary ${
+                isActive("/about") ? "text-primary" : "text-foreground"
+              }`}
+            >
+              About
+            </Link>
+
+            <Link
+              to="/contact"
+              className={`text-sm font-bold transition-colors hover:text-primary ${
+                isActive("/contact") ? "text-primary" : "text-foreground"
+              }`}
+            >
+              Contact
+            </Link>
           </nav>
 
           {/* CTA Button */}
@@ -104,7 +118,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            className="lg:hidden p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -123,50 +137,22 @@ const Header = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden py-4 border-t border-border"
+              className="lg:hidden py-4 border-t border-border"
             >
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-2">
                 {navLinks.map((link) => (
-                  link.hasDropdown ? (
-                    <div key={link.href} className="space-y-2">
-                      <Link
-                        to={link.href}
-                        onClick={() => setIsMenuOpen(false)}
-                        className={`text-sm font-bold py-2 transition-colors ${
-                          isActive(link.href) || location.pathname.startsWith("/international")
-                            ? "text-primary"
-                            : "text-foreground"
-                        }`}
-                      >
-                        {link.label}
-                      </Link>
-                      <div className="pl-4 flex flex-col gap-2">
-                        {internationalDestinations.slice(0, 4).map((dest) => (
-                          <Link
-                            key={dest}
-                            to={`/international?destination=${dest.toLowerCase().split(" ")[0]}`}
-                            onClick={() => setIsMenuOpen(false)}
-                            className="text-sm text-muted-foreground py-1"
-                          >
-                            {dest}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ) : (
-                    <Link
-                      key={link.href}
-                      to={link.href}
-                      onClick={() => setIsMenuOpen(false)}
-                      className={`text-sm font-bold py-2 transition-colors ${
-                        isActive(link.href)
-                          ? "text-primary"
-                          : "text-foreground"
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  )
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`text-sm font-bold py-2 px-2 rounded-md transition-colors ${
+                      isActive(link.href)
+                        ? "text-primary bg-primary/5"
+                        : "text-foreground hover:bg-muted"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
                 ))}
                 <a
                   href="https://wa.me/919474025173"

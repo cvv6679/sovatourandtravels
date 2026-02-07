@@ -1,20 +1,22 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, Wallet, MapPin, HeartHandshake, Star, Phone, Mail } from "lucide-react";
+import { ArrowRight, Shield, Wallet, MapPin, HeartHandshake, Star, Phone, Mail, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import TourCard from "@/components/TourCard";
-import { toursData, testimonialData } from "@/lib/tourData";
+import { useFeaturedTours } from "@/hooks/useTours";
+import { useTestimonials } from "@/hooks/useTestimonials";
 import heroImage from "@/assets/hero-kashmir.jpg";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
-  const featuredTours = toursData.filter((tour) => tour.is_featured).slice(0, 6);
+  const { data: featuredTours, isLoading: toursLoading } = useFeaturedTours();
+  const { data: testimonials, isLoading: testimonialsLoading } = useTestimonials();
   const [email, setEmail] = useState("");
   const [isSubscribing, setIsSubscribing] = useState(false);
   const { toast } = useToast();
@@ -46,6 +48,9 @@ const Index = () => {
     }
   };
 
+  const displayedTours = featuredTours?.slice(0, 6) || [];
+  const displayedTestimonials = testimonials?.slice(0, 3) || [];
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -70,7 +75,7 @@ const Index = () => {
             className="max-w-2xl"
           >
             <span className="inline-block bg-secondary/20 text-secondary px-4 py-1.5 rounded-full text-sm font-medium mb-6">
-              ✈️ Budget-Friendly Tours from Kolkata
+              ✈️ Budget-Friendly Tours from Rampurhat & Kolkata
             </span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Explore India with{" "}
@@ -112,32 +117,42 @@ const Index = () => {
               Featured Tour Packages
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Handpicked destinations with the best value for money. All tours start from Kolkata.
+              Handpicked destinations with the best value for money. Tours available from Rampurhat & Kolkata.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {featuredTours.map((tour, index) => (
-              <motion.div
-                key={tour.slug}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <TourCard
-                  id={tour.slug}
-                  slug={tour.slug}
-                  title={tour.title}
-                  destination={tour.destination}
-                  duration_days={tour.duration_days}
-                  original_price_inr={tour.original_price_inr}
-                  discounted_price_inr={tour.discounted_price_inr}
-                  hero_image_url={tour.hero_image_url}
-                />
-              </motion.div>
-            ))}
-          </div>
+          {toursLoading ? (
+            <div className="flex justify-center py-12">
+              <Loader2 className="w-8 h-8 animate-spin text-primary" />
+            </div>
+          ) : displayedTours.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {displayedTours.map((tour, index) => (
+                <motion.div
+                  key={tour.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <TourCard
+                    id={tour.id}
+                    slug={tour.slug}
+                    title={tour.title}
+                    destination={tour.destination}
+                    duration_days={tour.duration_days}
+                    original_price_inr={tour.original_price_inr}
+                    discounted_price_inr={tour.discounted_price_inr}
+                    hero_image_url={tour.hero_image_url}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12 text-muted-foreground">
+              <p>No featured tours available. Check back soon!</p>
+            </div>
+          )}
 
           <div className="text-center mt-10">
             <Link to="/packages">
@@ -168,7 +183,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { icon: Wallet, title: "Budget Friendly", description: "Best prices guaranteed with no hidden costs. Quality tours at affordable rates." },
-              { icon: Shield, title: "Trusted Service", description: "Years of experience serving happy travelers from Kolkata and beyond." },
+              { icon: Shield, title: "Trusted Service", description: "Years of experience serving happy travelers from Rampurhat and beyond." },
               { icon: MapPin, title: "Local Expertise", description: "Deep knowledge of destinations with trusted local partners across India." },
               { icon: HeartHandshake, title: "Customizable", description: "Flexible itineraries tailored to your preferences and budget." },
             ].map((feature, index) => (
@@ -210,38 +225,58 @@ const Index = () => {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {testimonialData.slice(0, 3).map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-card p-6 rounded-2xl card-shadow"
-              >
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-travel-gold text-travel-gold" />
-                  ))}
-                </div>
-                <p className="text-card-foreground mb-4 leading-relaxed">
-                  "{testimonial.text}"
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="font-semibold text-primary">
-                      {testimonial.name.charAt(0)}
-                    </span>
+          {testimonialsLoading ? (
+            <div className="flex justify-center py-12">
+              <Loader2 className="w-8 h-8 animate-spin text-primary" />
+            </div>
+          ) : displayedTestimonials.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {displayedTestimonials.map((testimonial, index) => (
+                <motion.div
+                  key={testimonial.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-card p-6 rounded-2xl card-shadow"
+                >
+                  <div className="flex gap-1 mb-4">
+                    {Array.from({ length: testimonial.rating }).map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-travel-gold text-travel-gold" />
+                    ))}
                   </div>
-                  <div>
-                    <p className="font-medium text-card-foreground">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.destination} Tour</p>
+                  <p className="text-card-foreground mb-4 leading-relaxed">
+                    "{testimonial.text}"
+                  </p>
+                  <div className="flex items-center gap-3">
+                    {testimonial.avatar_url ? (
+                      <img
+                        src={testimonial.avatar_url}
+                        alt={testimonial.name}
+                        className="w-10 h-10 rounded-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                        <span className="font-semibold text-primary">
+                          {testimonial.name.charAt(0)}
+                        </span>
+                      </div>
+                    )}
+                    <div>
+                      <p className="font-medium text-card-foreground">{testimonial.name}</p>
+                      {testimonial.destination && (
+                        <p className="text-sm text-muted-foreground">{testimonial.destination} Tour</p>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12 text-muted-foreground">
+              <p>No testimonials yet. Be the first to share your experience!</p>
+            </div>
+          )}
         </div>
       </section>
 

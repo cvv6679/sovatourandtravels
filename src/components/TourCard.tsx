@@ -2,17 +2,17 @@
  import { Clock, MapPin, Star } from "lucide-react";
  import { motion } from "framer-motion";
  
- interface TourCardProps {
-   id: string;
-   slug: string;
-   title: string;
-   destination: string;
-   duration_days: number;
-   original_price_inr: number;
-   discounted_price_inr: number;
-   hero_image_url: string;
-   best_season?: string;
- }
+interface TourCardProps {
+  id: string;
+  slug: string;
+  title: string;
+  destination: string;
+  duration_days: number;
+  original_price_inr: number;
+  discounted_price_inr: number;
+  hero_image_url: string | null;
+  best_season?: string;
+}
  
  const TourCard = ({
    slug,
@@ -36,12 +36,18 @@
        <Link to={`/tour/${slug}`}>
          <div className="bg-card rounded-2xl overflow-hidden card-shadow">
            {/* Image Container */}
-           <div className="relative aspect-[4/3] overflow-hidden">
-             <img
-               src={hero_image_url}
-               alt={title}
-               className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-             />
+            <div className="relative aspect-[4/3] overflow-hidden">
+              {hero_image_url ? (
+                <img
+                  src={hero_image_url}
+                  alt={title}
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                  <MapPin className="w-12 h-12 text-muted-foreground" />
+                </div>
+              )}
              {/* Discount Badge */}
              {discount > 0 && (
                <div className="absolute top-3 left-3 bg-secondary text-secondary-foreground text-xs font-bold px-2 py-1 rounded-full">
