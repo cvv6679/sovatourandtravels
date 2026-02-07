@@ -8,4 +8,15 @@ cmds = ["npm install"]
 cmds = ["npm run build"]
 
 [start]
+cmd = "npx serve -s dist -l 3000"[providers]
+node = true
+
+[phases.install]
+cmds = ["npm install"]
+
+[phases.build]
+cmds = ["npm run build"]
+
+[start]
 cmd = "npx serve -s dist -l 3000"
+
