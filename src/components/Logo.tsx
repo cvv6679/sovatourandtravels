@@ -7,7 +7,7 @@ const Logo = ({ className = "", showText = true }: LogoProps) => {
   return (
     <div className={`flex items-center gap-2 ${className}`}>
       <img
-        src="/logo.png"
+        src="/logo.PNG"
         alt="Sova Tours & Travels"
         className="h-10 w-auto"
       />
