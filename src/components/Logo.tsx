@@ -3,13 +3,13 @@ interface LogoProps {
   showText?: boolean;
 }
 
-const Logo = ({ className = "", showText = true }: LogoProps) => {
+const Logo = ({ className = "", showText = false }: LogoProps) => {
   return (
     <div className={`flex items-center gap-2 ${className}`}>
       <img
         src="/logo.PNG"
         alt="Sova Tours & Travels"
-        className="h-10 w-auto"
+        className="h-12 md:h-14 w-auto"
       />
 
       {showText && (
