@@ -15,7 +15,7 @@ const Footer = () => {
                 <span className="text-primary-foreground font-bold text-lg">S</span>
               </div>
               <span className="font-display font-bold text-lg text-background">
-                Sova Tours & Travels
+                Sova Tour & Travels
               </span>
             </div>
             <p className="text-background/70 text-sm leading-relaxed mb-4">
