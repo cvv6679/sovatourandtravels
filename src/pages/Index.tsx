@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import TourCard from "@/components/TourCard";
+import SEOHead from "@/components/SEOHead";
 import { useFeaturedTours } from "@/hooks/useTours";
 import { useTestimonials } from "@/hooks/useTestimonials";
 import heroImage from "@/assets/hero-kashmir.jpg";
@@ -53,6 +54,40 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Sova Tour & Travels - Budget Tours from Rampurhat & Kolkata"
+        description="Explore India with Sova Tour & Travels. Budget-friendly domestic, international & pilgrimage tour packages from Rampurhat & Kolkata. Kashmir, Ladakh, Darjeeling & more."
+        ogUrl="https://sovatourandtravels.lovable.app"
+        canonical="https://sovatourandtravels.lovable.app"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              name: "Sova Tour & Travels",
+              url: "https://sovatourandtravels.lovable.app",
+              logo: "https://sovatourandtravels.lovable.app/logo.PNG",
+              contactPoint: { "@type": "ContactPoint", telephone: "+919474025173", contactType: "customer service" },
+            },
+            {
+              "@type": "TravelAgency",
+              name: "Sova Tour & Travels",
+              image: "https://sovatourandtravels.lovable.app/logo.PNG",
+              telephone: "+919474025173",
+              email: "sovainternetcafe@gmail.com",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "MNK Road, Bharsala More",
+                addressLocality: "Rampurhat",
+                addressRegion: "West Bengal",
+                postalCode: "731224",
+                addressCountry: "IN",
+              },
+              priceRange: "₹₹",
+            },
+          ],
+        }}
+      />
       <Header />
       <WhatsAppButton />
 

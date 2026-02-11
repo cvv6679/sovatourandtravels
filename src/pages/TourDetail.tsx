@@ -10,6 +10,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import InquiryForm from "@/components/InquiryForm";
+import SEOHead from "@/components/SEOHead";
 import { useTourBySlug } from "@/hooks/useTours";
 
 const TourDetail = () => {
@@ -54,8 +55,37 @@ const TourDetail = () => {
     { q: "What about travel insurance?", a: "Basic travel insurance is included in most packages. For comprehensive coverage, please inquire." },
   ];
 
+  const tourUrl = `https://sovatourandtravels.lovable.app/tour/${tour.slug}`;
+  const tourSchema = {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    name: tour.title,
+    description: tour.overview || `${tour.title} - ${tour.duration_days} days tour from ${tour.start_city}`,
+    image: tour.hero_image_url || "",
+    touristType: tour.category,
+    offers: {
+      "@type": "Offer",
+      price: tour.discounted_price_inr,
+      priceCurrency: "INR",
+      availability: "https://schema.org/InStock",
+    },
+    provider: {
+      "@type": "TravelAgency",
+      name: "Sova Tour & Travels",
+      telephone: "+919474025173",
+    },
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title={`${tour.title} - ₹${tour.discounted_price_inr.toLocaleString("en-IN")} | Sova Tours`}
+        description={tour.overview || `Book ${tour.title} - ${tour.duration_days} days tour starting from ₹${tour.discounted_price_inr.toLocaleString("en-IN")} per person from ${tour.start_city}.`}
+        ogImage={tour.hero_image_url || undefined}
+        ogUrl={tourUrl}
+        canonical={tourUrl}
+        jsonLd={tourSchema}
+      />
       <Header />
       <WhatsAppButton />
 

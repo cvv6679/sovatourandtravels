@@ -21,6 +21,7 @@ const Header = () => {
     { href: "/packages?category=domestic", label: "Domestic Trips" },
     { href: "/packages?category=international", label: "International Trips" },
     { href: "/packages?category=pilgrimage", label: "Pilgrim Trips" },
+    { href: "/blog", label: "Blog" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ];
@@ -82,6 +83,15 @@ const Header = () => {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+
+            <Link
+              to="/blog"
+              className={`text-sm font-bold transition-colors hover:text-primary ${
+                isActive("/blog") ? "text-primary" : "text-foreground"
+              }`}
+            >
+              Blog
+            </Link>
 
             <Link
               to="/about"

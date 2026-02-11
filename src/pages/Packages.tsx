@@ -9,6 +9,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import TourCard from "@/components/TourCard";
+import SEOHead from "@/components/SEOHead";
 import { useTours } from "@/hooks/useTours";
 
 const Packages = () => {
@@ -110,6 +111,12 @@ const Packages = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title={`${pageTitle} - Sova Tour & Travels`}
+        description={`${pageDescription}. Book affordable tour packages from Rampurhat & Kolkata.`}
+        ogUrl={`https://sovatourandtravels.lovable.app/packages${categoryFilter ? `?category=${categoryFilter}` : ""}`}
+        canonical={`https://sovatourandtravels.lovable.app/packages${categoryFilter ? `?category=${categoryFilter}` : ""}`}
+      />
       <Header />
       <WhatsAppButton />
 
