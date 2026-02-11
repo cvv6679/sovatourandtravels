@@ -12,6 +12,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { useToast } from "@/hooks/use-toast";
 import { Plus, Pencil, Trash2, Eye, EyeOff, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { ImageUpload, GalleryUpload } from "@/components/admin/ImageUpload";
 
 interface Tour {
   id: string;
@@ -72,7 +73,7 @@ const Tours = () => {
   const [saving, setSaving] = useState(false);
   const [inclusionsText, setInclusionsText] = useState("");
   const [exclusionsText, setExclusionsText] = useState("");
-  const [galleryText, setGalleryText] = useState("");
+  const [galleryUrls, setGalleryUrls] = useState<string[]>([]);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -115,7 +116,7 @@ const Tours = () => {
     setItinerary([{ day_number: 1, title: "", description: "" }]);
     setInclusionsText("");
     setExclusionsText("");
-    setGalleryText("");
+    setGalleryUrls([]);
     setIsDialogOpen(true);
   };
 
@@ -143,7 +144,7 @@ const Tours = () => {
     });
     setInclusionsText((tour.inclusions || []).join("\n"));
     setExclusionsText((tour.exclusions || []).join("\n"));
-    setGalleryText((tour.gallery_images || []).join("\n"));
+    setGalleryUrls(tour.gallery_images || []);
     await fetchItinerary(tour.id);
     setIsDialogOpen(true);
   };
@@ -156,7 +157,7 @@ const Tours = () => {
       ...formData,
       inclusions: inclusionsText.split("\n").filter(Boolean),
       exclusions: exclusionsText.split("\n").filter(Boolean),
-      gallery_images: galleryText.split("\n").filter(Boolean),
+      gallery_images: galleryUrls.filter(Boolean),
       slug: formData.slug || formData.title.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, ""),
     };
 
@@ -389,14 +390,12 @@ const Tours = () => {
                     placeholder="e.g., Flight + Private Cab"
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label>Hero Image URL</Label>
-                  <Input
-                    value={formData.hero_image_url}
-                    onChange={(e) => setFormData({ ...formData, hero_image_url: e.target.value })}
-                    placeholder="https://..."
-                  />
-                </div>
+                <ImageUpload
+                  label="Hero Image"
+                  value={formData.hero_image_url}
+                  onChange={(url) => setFormData({ ...formData, hero_image_url: url })}
+                  folder="hero"
+                />
               </div>
 
               <div className="space-y-2">
@@ -429,15 +428,11 @@ const Tours = () => {
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Label>Gallery Images (URLs, one per line)</Label>
-                <Textarea
-                  value={galleryText}
-                  onChange={(e) => setGalleryText(e.target.value)}
-                  rows={3}
-                  placeholder="https://example.com/image1.jpg&#10;https://example.com/image2.jpg"
-                />
-              </div>
+              <GalleryUpload
+                label="Gallery Images"
+                urls={galleryUrls}
+                onChange={setGalleryUrls}
+              />
 
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
