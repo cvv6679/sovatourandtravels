@@ -8,6 +8,8 @@ import Packages from "./pages/Packages";
 import TourDetail from "./pages/TourDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import RefundPolicy from "./pages/RefundPolicy";
 import TermsConditions from "./pages/TermsConditions";
@@ -21,6 +23,7 @@ import Tours from "./pages/admin/Tours";
 import Inquiries from "./pages/admin/Inquiries";
 import Team from "./pages/admin/Team";
 import Testimonials from "./pages/admin/Testimonials";
+import BlogPosts from "./pages/admin/BlogPosts";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +39,8 @@ const App = () => (
           <Route path="/tour/:slug" element={<TourDetail />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogDetail />} />
           {/* Redirect old /international route to new category filter */}
           <Route path="/international" element={<Navigate to="/packages?category=international" replace />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
@@ -50,6 +55,7 @@ const App = () => (
             <Route path="tours" element={<Tours />} />
             <Route path="inquiries" element={<Inquiries />} />
             <Route path="testimonials" element={<Testimonials />} />
+            <Route path="blog" element={<BlogPosts />} />
             <Route path="team" element={<Team />} />
           </Route>
           

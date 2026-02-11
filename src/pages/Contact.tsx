@@ -4,10 +4,17 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import InquiryForm from "@/components/InquiryForm";
+import SEOHead from "@/components/SEOHead";
  
  const Contact = () => {
    return (
      <div className="min-h-screen bg-background">
+       <SEOHead
+         title="Contact Us - Sova Tour & Travels"
+         description="Contact Sova Tour & Travels for custom tour quotes, inquiries, and bookings. Call +91 9474025173 or visit us at Rampurhat, West Bengal."
+         ogUrl="https://sovatourandtravels.lovable.app/contact"
+         canonical="https://sovatourandtravels.lovable.app/contact"
+       />
        <Header />
        <WhatsAppButton />
  

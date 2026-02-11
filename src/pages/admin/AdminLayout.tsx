@@ -14,6 +14,7 @@ import {
   Loader2,
   ChevronRight,
   Star,
+  FileText,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -22,6 +23,7 @@ const navItems = [
   { href: "/admin/tours", label: "Tours", icon: Package },
   { href: "/admin/inquiries", label: "Inquiries", icon: Inbox },
   { href: "/admin/testimonials", label: "Testimonials", icon: Star },
+  { href: "/admin/blog", label: "Blog", icon: FileText },
   { href: "/admin/team", label: "Team", icon: Users },
 ];
 

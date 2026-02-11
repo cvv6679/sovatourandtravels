@@ -3,10 +3,17 @@
  import Header from "@/components/Header";
  import Footer from "@/components/Footer";
  import WhatsAppButton from "@/components/WhatsAppButton";
+ import SEOHead from "@/components/SEOHead";
  
  const About = () => {
    return (
      <div className="min-h-screen bg-background">
+       <SEOHead
+         title="About Us - Sova Tour & Travels"
+         description="Learn about Sova Tour & Travels, your trusted travel partner from Rampurhat for budget-friendly domestic and international tours."
+         ogUrl="https://sovatourandtravels.lovable.app/about"
+         canonical="https://sovatourandtravels.lovable.app/about"
+       />
        <Header />
        <WhatsAppButton />
  
