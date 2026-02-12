@@ -10,10 +10,11 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Pencil, Trash2, Eye, EyeOff, Loader2 } from "lucide-react";
+import { Plus, Pencil, Trash2, Eye, EyeOff, Loader2, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ImageUpload } from "@/components/admin/ImageUpload";
 import { format } from "date-fns";
+import AIBlogBuilder from "@/components/admin/AIBlogBuilder";
 
 interface BlogPost {
   id: string;
@@ -59,6 +60,7 @@ const BlogPosts = () => {
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
   const [formData, setFormData] = useState(defaultPost);
   const [saving, setSaving] = useState(false);
+  const [aiBuilderOpen, setAiBuilderOpen] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -182,13 +184,18 @@ const BlogPosts = () => {
           <h1 className="text-2xl font-bold">Blog Posts</h1>
           <p className="text-muted-foreground">Manage your blog content</p>
         </div>
-        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogTrigger asChild>
-            <Button onClick={openCreateDialog}>
-              <Plus className="w-4 h-4 mr-2" />
-              New Post
-            </Button>
-          </DialogTrigger>
+        <div className="flex gap-2">
+          <Button variant="outline" onClick={() => setAiBuilderOpen(true)}>
+            <Sparkles className="w-4 h-4 mr-2" />
+            Create Post with AI
+          </Button>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogTrigger asChild>
+              <Button onClick={openCreateDialog}>
+                <Plus className="w-4 h-4 mr-2" />
+                New Post
+              </Button>
+            </DialogTrigger>
           <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>{editingPost ? "Edit Blog Post" : "Create New Blog Post"}</DialogTitle>
@@ -353,8 +360,11 @@ const BlogPosts = () => {
               </div>
             </form>
           </DialogContent>
-        </Dialog>
+          </Dialog>
+        </div>
       </div>
+
+      <AIBlogBuilder open={aiBuilderOpen} onOpenChange={setAiBuilderOpen} onSuccess={fetchPosts} />
 
       <Card>
         <CardContent className="p-0">

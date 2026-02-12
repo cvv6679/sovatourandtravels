@@ -10,9 +10,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Pencil, Trash2, Eye, EyeOff, Loader2 } from "lucide-react";
+import { Plus, Pencil, Trash2, Eye, EyeOff, Loader2, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ImageUpload, GalleryUpload } from "@/components/admin/ImageUpload";
+import AITourBuilder from "@/components/admin/AITourBuilder";
 
 interface Tour {
   id: string;
@@ -74,6 +75,7 @@ const Tours = () => {
   const [inclusionsText, setInclusionsText] = useState("");
   const [exclusionsText, setExclusionsText] = useState("");
   const [galleryUrls, setGalleryUrls] = useState<string[]>([]);
+  const [aiBuilderOpen, setAiBuilderOpen] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -273,13 +275,18 @@ const Tours = () => {
           <h1 className="text-2xl font-bold">Tour Packages</h1>
           <p className="text-muted-foreground">Manage your tour packages</p>
         </div>
-        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogTrigger asChild>
-            <Button onClick={openCreateDialog}>
-              <Plus className="w-4 h-4 mr-2" />
-              Add Tour
-            </Button>
-          </DialogTrigger>
+        <div className="flex gap-2">
+          <Button variant="outline" onClick={() => setAiBuilderOpen(true)}>
+            <Sparkles className="w-4 h-4 mr-2" />
+            Create Tour with AI
+          </Button>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogTrigger asChild>
+              <Button onClick={openCreateDialog}>
+                <Plus className="w-4 h-4 mr-2" />
+                Add Tour
+              </Button>
+            </DialogTrigger>
           <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>{editingTour ? "Edit Tour" : "Create New Tour"}</DialogTitle>
@@ -500,8 +507,11 @@ const Tours = () => {
               </div>
             </form>
           </DialogContent>
-        </Dialog>
+          </Dialog>
+        </div>
       </div>
+
+      <AITourBuilder open={aiBuilderOpen} onOpenChange={setAiBuilderOpen} onSuccess={fetchTours} />
 
       <Card>
         <CardContent className="p-0">
