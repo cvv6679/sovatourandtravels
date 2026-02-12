@@ -16,9 +16,11 @@ export type Database = {
     Tables: {
       blog_posts: {
         Row: {
+          ai_generated: boolean | null
           author: string | null
           category: string | null
           content: string | null
+          content_bn_html: string | null
           created_at: string
           excerpt: string | null
           featured_image_url: string | null
@@ -36,9 +38,11 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          ai_generated?: boolean | null
           author?: string | null
           category?: string | null
           content?: string | null
+          content_bn_html?: string | null
           created_at?: string
           excerpt?: string | null
           featured_image_url?: string | null
@@ -56,9 +60,11 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          ai_generated?: boolean | null
           author?: string | null
           category?: string | null
           content?: string | null
+          content_bn_html?: string | null
           created_at?: string
           excerpt?: string | null
           featured_image_url?: string | null
@@ -215,6 +221,7 @@ export type Database = {
       }
       tours: {
         Row: {
+          ai_generated: boolean | null
           best_season: string | null
           category: string
           created_at: string
@@ -238,6 +245,7 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          ai_generated?: boolean | null
           best_season?: string | null
           category?: string
           created_at?: string
@@ -261,6 +269,7 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          ai_generated?: boolean | null
           best_season?: string | null
           category?: string
           created_at?: string
