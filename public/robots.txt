@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
-Sitemap: https://giohtapleewzetffgnnz.supabase.co/functions/v1/sitemap
+
+Sitemap: https://sovatourandtravels.com/sitemap.xml
+
