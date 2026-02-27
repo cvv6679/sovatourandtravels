@@ -143,6 +143,6 @@ Topic: ${prompt}
     return new Response(JSON.stringify({ success: true }), { status: 200 })
 
   } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), { status: 500 })
+    return new Response(JSON.stringify({ error: (err as Error).message }), { status: 500 })
   }
 })
