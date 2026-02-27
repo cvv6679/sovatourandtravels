@@ -31,6 +31,23 @@ async function searchUnsplash(query: string): Promise<any | null> {
   }
 }
 
+function cleanAndParseJSON(raw: string): Record<string, any> {
+  // Strip markdown code fences if present
+  let cleaned = raw.trim();
+  const fenceMatch = cleaned.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (fenceMatch) {
+    cleaned = fenceMatch[1].trim();
+  }
+  // Remove any leading/trailing non-JSON characters
+  const firstBrace = cleaned.indexOf("{");
+  const lastBrace = cleaned.lastIndexOf("}");
+  if (firstBrace === -1 || lastBrace === -1) {
+    throw new Error("No valid JSON object found in AI response");
+  }
+  cleaned = cleaned.substring(firstBrace, lastBrace + 1);
+  return JSON.parse(cleaned);
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
@@ -65,34 +82,37 @@ serve(async (req) => {
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
-    const systemPrompt = `You are a professional travel blog writer for Sova Tour and Travels, a travel agency based in West Bengal, India.
-Generate clean structured HTML only. Return ONLY valid HTML inside the JSON fields. No markdown. No plain text formatting. No backticks. Use semantic HTML tags.
+    const systemPrompt = `You are a professional SEO travel blog writer for Sova Tour and Travels, a travel agency based in West Bengal, India.`;
 
-STRICT HTML RULES:
+    const userPrompt = `Generate a detailed 1500+ word travel blog about: ${prompt}${focus_keyword ? `\nFocus keyword: ${focus_keyword}` : ""}
+
+Return ONLY valid JSON in this exact format (no explanation, no markdown fences, no backticks outside JSON):
+
+{
+  "title": "Blog post title",
+  "excerpt": "2-3 sentence plain text summary",
+  "html_content": "Full HTML content string",
+  ${include_bengali !== false ? '"html_content_bn": "Bengali HTML content string (300-500 words)",' : ""}
+  "category": "${category || "Travel Tips"}",
+  "meta_title": "Under 60 characters",
+  "meta_description": "Under 160 characters",
+  "og_title": "Open Graph title",
+  "og_description": "Open Graph description",
+  "focus_keyword": "${focus_keyword || ""}"
+}
+
+STRICT RULES for html_content (and html_content_bn):
+- Must contain ONLY clean semantic HTML tags
+- Use <h2> for main section headings and <h3> for subsections — NEVER use <h1>
 - Every paragraph MUST be wrapped in <p> tags
-- Use <h2> for main sections and <h3> for subsections — do NOT use <h1>
 - Use <ul><li> for bullet lists and <ol><li> for numbered lists
 - Use <strong> for bold and <em> for italic
 - For any cost/price breakdown, use <table><thead><tr><th></th></tr></thead><tbody><tr><td></td></tr></tbody></table>
 - Include a FAQ section at the end with <h2>Frequently Asked Questions</h2> and each question as <h3> followed by <p> answer
-- Do NOT output line breaks as content structure — always use proper HTML block elements
-- Do NOT use markdown syntax like **, ##, -, or backticks anywhere
-- Content should be 800-1500 words, SEO-optimized with the focus keyword naturally included
-${include_bengali !== false ? "- Also write a Bengali version using the same HTML rules (shorter summary, 300-500 words)" : ""}
-
-Return ONLY valid JSON (no markdown fences around it):
-{
-  "title": "string",
-  "excerpt": "string (2-3 sentences plain text summary)",
-  "content": "string (full HTML content using semantic tags only)",
-  ${include_bengali !== false ? '"content_bn_html": "string (Bengali HTML content using semantic tags)",' : ""}
-  "category": "${category || 'Travel Tips'}",
-  "meta_title": "string (under 60 chars)",
-  "meta_description": "string (under 160 chars)",
-  "og_title": "string",
-  "og_description": "string",
-  "focus_keyword": "${focus_keyword || ''}"
-}`;
+- Do NOT output line breaks or newlines as content structure — always use proper HTML block elements
+- Do NOT use markdown syntax like **, ##, -, or backticks anywhere inside html_content
+- Do NOT include meta labels, JSON keys, or field names inside the html_content
+- Do NOT wrap the JSON in markdown code fences`;
 
     const aiResponse = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -104,7 +124,7 @@ Return ONLY valid JSON (no markdown fences around it):
         model: "google/gemini-3-flash-preview",
         messages: [
           { role: "system", content: systemPrompt },
-          { role: "user", content: `Write a blog post about: ${prompt}${focus_keyword ? `. Focus keyword: ${focus_keyword}` : ""}` },
+          { role: "user", content: userPrompt },
         ],
       }),
     });
@@ -124,12 +144,30 @@ Return ONLY valid JSON (no markdown fences around it):
     }
 
     const aiData = await aiResponse.json();
-    let content = aiData.choices?.[0]?.message?.content || "";
-    
-    const jsonMatch = content.match(/```(?:json)?\s*([\s\S]*?)```/);
-    if (jsonMatch) content = jsonMatch[1];
-    
-    const blogDraft = JSON.parse(content.trim());
+    const rawContent = aiData.choices?.[0]?.message?.content || "";
+
+    // Strict JSON parsing with cleanup
+    let blogDraft: Record<string, any>;
+    try {
+      blogDraft = cleanAndParseJSON(rawContent);
+    } catch (parseErr) {
+      console.error("JSON parse failed. Raw content:", rawContent.substring(0, 500));
+      throw new Error("AI returned invalid JSON. Please try again.");
+    }
+
+    // Validate required fields
+    if (!blogDraft.title || !blogDraft.html_content) {
+      throw new Error("AI response missing required fields (title or html_content)");
+    }
+
+    // Map html_content to content for database compatibility
+    blogDraft.content = blogDraft.html_content;
+    delete blogDraft.html_content;
+
+    if (blogDraft.html_content_bn) {
+      blogDraft.content_bn_html = blogDraft.html_content_bn;
+      delete blogDraft.html_content_bn;
+    }
 
     // Generate unique slug
     const baseSlug = blogDraft.title.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");

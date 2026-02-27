@@ -73,6 +73,14 @@ const AIBlogBuilder = ({ open, onOpenChange, onSuccess }: AIBlogBuilderProps) =>
 
       const { blog, image } = data;
 
+      // content is already mapped from html_content by the edge function
+      const htmlContent = blog.content || blog.html_content || "";
+      const bnContent = blog.content_bn_html || blog.html_content_bn || "";
+
+      if (!htmlContent) {
+        throw new Error("AI returned empty content. Please try again.");
+      }
+
       setFormData({
         title: blog.title || "",
         slug: blog.slug || generateSlug(blog.title || ""),
@@ -81,8 +89,8 @@ const AIBlogBuilder = ({ open, onOpenChange, onSuccess }: AIBlogBuilderProps) =>
         publish_date: new Date().toISOString().split("T")[0],
         featured_image_url: image?.url || "",
         excerpt: blog.excerpt || "",
-        content: blog.content || "",
-        content_bn_html: blog.content_bn_html || "",
+        content: htmlContent,
+        content_bn_html: bnContent,
         meta_title: blog.meta_title || "",
         meta_description: blog.meta_description || "",
         og_title: blog.og_title || "",
