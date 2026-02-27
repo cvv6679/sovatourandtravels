@@ -1,4 +1,4 @@
-// auto-blog-publisher edge function
+// PROFESSIONAL auto-blog-publisher
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2"
@@ -8,105 +8,141 @@ serve(async (req) => {
     const { prompt } = await req.json()
 
     if (!prompt) {
-      return new Response(
-        JSON.stringify({ error: "Prompt is required" }),
-        { status: 400 }
-      )
+      return new Response(JSON.stringify({ error: "Prompt required" }), { status: 400 })
     }
 
-    // 🔐 Create Supabase client (service role internally available)
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
     )
 
-    // 🤖 Call OpenAI
-    const openaiRes = await fetch("https://api.openai.com/v1/chat/completions", {
+    // 🔥 1. Generate Structured JSON from OpenAI
+    const aiRes = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${Deno.env.get("OPENAI_API_KEY")}`,
+        "Authorization": `Bearer ${Deno.env.get("OPENAI_API_KEY")}`
       },
       body: JSON.stringify({
         model: "gpt-4o-mini",
+        temperature: 0.7,
         messages: [
+          {
+            role: "system",
+            content: "You are a professional travel SEO content writer."
+          },
           {
             role: "user",
             content: `
-Write a 1500+ word SEO optimized travel blog in HTML format.
+Generate a detailed 1500+ word travel blog.
+
+Return ONLY valid JSON in this format:
+
+{
+  "title": "",
+  "excerpt": "",
+  "meta_title": "",
+  "meta_description": "",
+  "focus_keyword": "",
+  "html_content": ""
+}
+
+Rules:
+- html_content must contain clean HTML only
+- Use proper <h2>, <h3>, <p>, <ul>, <table>
+- Include a proper cost breakdown table
+- Do NOT include META labels inside html_content
+- No markdown
+- No code blocks
+- No backticks
+- Clean readable formatting
 
 Topic: ${prompt}
-
-Include:
-- H2 headings
-- Travel cost breakdown
-- Transport info
-- Hotels
-- FAQ section
-- Conclusion
-
-At the end provide:
-META_TITLE:
-META_DESCRIPTION:
-FOCUS_KEYWORD:
-EXCERPT:
 `
           }
-        ],
-        temperature: 0.7
+        ]
       })
     })
 
-    const openaiData = await openaiRes.json()
+    const aiData = await aiRes.json()
 
-    const content = openaiData.choices[0].message.content
+    let raw = aiData.choices?.[0]?.message?.content
 
-    // Create slug
-    const slug = prompt
+    if (!raw) {
+      return new Response(JSON.stringify({ error: "AI generation failed" }), { status: 500 })
+    }
+
+    // Clean accidental code blocks if any
+    raw = raw.replace(/```json|```/g, "").trim()
+
+    const parsed = JSON.parse(raw)
+
+    const {
+      title,
+      excerpt,
+      meta_title,
+      meta_description,
+      focus_keyword,
+      html_content
+    } = parsed
+
+    // 🔥 2. Fetch Featured Image from Unsplash
+    let featuredImage = ""
+
+    try {
+      const imageRes = await fetch(
+        `https://api.unsplash.com/search/photos?query=${encodeURIComponent(prompt)}&per_page=1`,
+        {
+          headers: {
+            "Authorization": `Client-ID ${Deno.env.get("UNSPLASH_ACCESS_KEY")}`
+          }
+        }
+      )
+
+      const imageData = await imageRes.json()
+      featuredImage = imageData.results?.[0]?.urls?.regular || ""
+    } catch {
+      featuredImage = ""
+    }
+
+    // 🔥 3. Generate Slug
+    const slug = title
       .toLowerCase()
       .replace(/[^a-z0-9\s-]/g, "")
       .replace(/\s+/g, "-")
+      .substring(0, 100)
 
     const now = new Date().toISOString()
 
-    // 📝 Insert into blog_posts
+    // 🔥 4. Insert Into blog_posts
     const { error } = await supabase.from("blog_posts").insert({
-      title: prompt,
+      title,
       slug,
-      excerpt: `Complete travel guide about ${prompt}`,
-      content,
-      featured_image_url: "",
+      excerpt,
+      content: html_content,
+      featured_image_url: featuredImage,
       category: "Travel Tips",
       author: "Sova Tours",
       is_published: true,
       publish_date: now,
-      meta_title: `${prompt} | Sova Tours`,
-      meta_description: `Detailed travel guide about ${prompt}`,
-      og_title: `${prompt} | Sova Tours`,
-      og_description: `Complete travel guide about ${prompt}`,
-      og_image: "",
-      focus_keyword: prompt,
+      meta_title,
+      meta_description,
+      og_title: meta_title,
+      og_description: meta_description,
+      og_image: featuredImage,
+      focus_keyword,
       ai_generated: true,
       created_at: now,
-      updated_at: now,
+      updated_at: now
     })
 
     if (error) {
-      return new Response(
-        JSON.stringify({ error }),
-        { status: 500 }
-      )
+      return new Response(JSON.stringify({ error }), { status: 500 })
     }
 
-    return new Response(
-      JSON.stringify({ success: true }),
-      { status: 200 }
-    )
+    return new Response(JSON.stringify({ success: true }), { status: 200 })
 
   } catch (err) {
-    return new Response(
-      JSON.stringify({ error: err.message }),
-      { status: 500 }
-    )
+    return new Response(JSON.stringify({ error: err.message }), { status: 500 })
   }
 })
