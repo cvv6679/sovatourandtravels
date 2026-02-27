@@ -140,11 +140,23 @@ const BlogDetail = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="prose prose-lg max-w-none text-foreground
-                prose-headings:font-display prose-headings:text-foreground
-                prose-p:text-muted-foreground prose-p:leading-relaxed
-                prose-a:text-primary prose-strong:text-foreground
-                prose-ul:text-muted-foreground prose-ol:text-muted-foreground"
+              className="prose prose-lg max-w-none mx-auto text-foreground
+                prose-headings:font-display prose-headings:text-foreground prose-headings:leading-tight
+                prose-h1:text-3xl prose-h1:md:text-4xl prose-h1:mt-10 prose-h1:mb-5
+                prose-h2:text-2xl prose-h2:md:text-3xl prose-h2:mt-8 prose-h2:mb-4 prose-h2:border-b prose-h2:border-border prose-h2:pb-2
+                prose-h3:text-xl prose-h3:md:text-2xl prose-h3:mt-6 prose-h3:mb-3
+                prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-5
+                prose-a:text-primary prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-primary/80
+                prose-strong:text-foreground
+                prose-ul:text-muted-foreground prose-ul:my-4 prose-ul:pl-6
+                prose-ol:text-muted-foreground prose-ol:my-4 prose-ol:pl-6
+                prose-li:mb-2
+                prose-img:rounded-lg prose-img:shadow-md prose-img:my-6
+                prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-muted/50 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-md prose-blockquote:not-italic
+                prose-table:border-collapse prose-table:w-full prose-table:my-6
+                prose-th:border prose-th:border-border prose-th:bg-muted prose-th:px-4 prose-th:py-2.5 prose-th:text-left prose-th:font-semibold prose-th:text-foreground
+                prose-td:border prose-td:border-border prose-td:px-4 prose-td:py-2.5 prose-td:text-muted-foreground
+                prose-hr:border-border prose-hr:my-8"
               dangerouslySetInnerHTML={{ __html: post.content || "" }}
             />
 
