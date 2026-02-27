@@ -65,23 +65,27 @@ serve(async (req) => {
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
-    const systemPrompt = `You are an expert travel blog writer for Sova Tour and Travels, a travel agency based in West Bengal, India.
-Write an SEO-optimized blog post based on the user's prompt.
+    const systemPrompt = `You are a professional travel blog writer for Sova Tour and Travels, a travel agency based in West Bengal, India.
+Generate clean structured HTML only. Return ONLY valid HTML inside the JSON fields. No markdown. No plain text formatting. No backticks. Use semantic HTML tags.
 
-RULES:
-- Content must be well-structured HTML with h2, h3, p, ul, li, strong, em tags
-- Include FAQ section at the end (h2 "Frequently Asked Questions" with h3 for each question)
-- Content should be 800-1500 words
-- Must be SEO friendly with the focus keyword naturally included
-- Write engaging, informative content
-${include_bengali !== false ? "- Also write a Bengali version of the blog (shorter summary, 300-500 words)" : ""}
+STRICT HTML RULES:
+- Every paragraph MUST be wrapped in <p> tags
+- Use <h2> for main sections and <h3> for subsections — do NOT use <h1>
+- Use <ul><li> for bullet lists and <ol><li> for numbered lists
+- Use <strong> for bold and <em> for italic
+- For any cost/price breakdown, use <table><thead><tr><th></th></tr></thead><tbody><tr><td></td></tr></tbody></table>
+- Include a FAQ section at the end with <h2>Frequently Asked Questions</h2> and each question as <h3> followed by <p> answer
+- Do NOT output line breaks as content structure — always use proper HTML block elements
+- Do NOT use markdown syntax like **, ##, -, or backticks anywhere
+- Content should be 800-1500 words, SEO-optimized with the focus keyword naturally included
+${include_bengali !== false ? "- Also write a Bengali version using the same HTML rules (shorter summary, 300-500 words)" : ""}
 
-Return ONLY valid JSON:
+Return ONLY valid JSON (no markdown fences around it):
 {
   "title": "string",
-  "excerpt": "string (2-3 sentences summary)",
-  "content": "string (full HTML content)",
-  ${include_bengali !== false ? '"content_bn_html": "string (Bengali HTML content)",' : ""}
+  "excerpt": "string (2-3 sentences plain text summary)",
+  "content": "string (full HTML content using semantic tags only)",
+  ${include_bengali !== false ? '"content_bn_html": "string (Bengali HTML content using semantic tags)",' : ""}
   "category": "${category || 'Travel Tips'}",
   "meta_title": "string (under 60 chars)",
   "meta_description": "string (under 160 chars)",
