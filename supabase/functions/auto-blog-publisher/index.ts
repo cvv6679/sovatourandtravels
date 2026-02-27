@@ -1,22 +1,49 @@
-// PROFESSIONAL auto-blog-publisher
-
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2"
 
 serve(async (req) => {
   try {
-    const { prompt } = await req.json()
-
-    if (!prompt) {
-      return new Response(JSON.stringify({ error: "Prompt required" }), { status: 400 })
-    }
-
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
     )
 
-    // 🔥 1. Generate Structured JSON from OpenAI
+    // Determine prompt source: manual body or queue
+    let prompt = ""
+    let queueRowId: string | null = null
+
+    try {
+      const body = await req.json()
+      if (body?.prompt) {
+        prompt = body.prompt
+      }
+    } catch {
+      // empty body — scheduled mode
+    }
+
+    // If no manual prompt, fetch from blog_prompt_queue
+    if (!prompt) {
+      const { data: queueRow, error: qErr } = await supabase
+        .from("blog_prompt_queue")
+        .select("id, prompt")
+        .eq("is_used", false)
+        .order("created_at", { ascending: true })
+        .limit(1)
+        .maybeSingle()
+
+      if (qErr) {
+        return new Response(JSON.stringify({ error: qErr.message }), { status: 500 })
+      }
+
+      if (!queueRow) {
+        return new Response(JSON.stringify({ message: "No pending prompts" }), { status: 200 })
+      }
+
+      prompt = queueRow.prompt
+      queueRowId = queueRow.id
+    }
+
+    // 1. Generate Structured JSON from OpenAI
     const aiRes = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -65,47 +92,31 @@ Topic: ${prompt}
     })
 
     const aiData = await aiRes.json()
-
     let raw = aiData.choices?.[0]?.message?.content
 
     if (!raw) {
       return new Response(JSON.stringify({ error: "AI generation failed" }), { status: 500 })
     }
 
-    // Clean accidental code blocks if any
     raw = raw.replace(/```json|```/g, "").trim()
-
     const parsed = JSON.parse(raw)
 
-    const {
-      title,
-      excerpt,
-      meta_title,
-      meta_description,
-      focus_keyword,
-      html_content
-    } = parsed
+    const { title, excerpt, meta_title, meta_description, focus_keyword, html_content } = parsed
 
-    // 🔥 2. Fetch Featured Image from Unsplash
+    // 2. Fetch Featured Image from Unsplash
     let featuredImage = ""
-
     try {
       const imageRes = await fetch(
         `https://api.unsplash.com/search/photos?query=${encodeURIComponent(prompt)}&per_page=1`,
-        {
-          headers: {
-            "Authorization": `Client-ID ${Deno.env.get("UNSPLASH_ACCESS_KEY")}`
-          }
-        }
+        { headers: { "Authorization": `Client-ID ${Deno.env.get("UNSPLASH_ACCESS_KEY")}` } }
       )
-
       const imageData = await imageRes.json()
       featuredImage = imageData.results?.[0]?.urls?.regular || ""
     } catch {
       featuredImage = ""
     }
 
-    // 🔥 3. Generate Slug
+    // 3. Generate Slug
     const slug = title
       .toLowerCase()
       .replace(/[^a-z0-9\s-]/g, "")
@@ -114,19 +125,16 @@ Topic: ${prompt}
 
     const now = new Date().toISOString()
 
-    // 🔥 4. Insert Into blog_posts
+    // 4. Insert Into blog_posts
     const { error } = await supabase.from("blog_posts").insert({
-      title,
-      slug,
-      excerpt,
+      title, slug, excerpt,
       content: html_content,
       featured_image_url: featuredImage,
       category: "Travel Tips",
       author: "Sova Tours",
       is_published: true,
       publish_date: now,
-      meta_title,
-      meta_description,
+      meta_title, meta_description,
       og_title: meta_title,
       og_description: meta_description,
       og_image: featuredImage,
@@ -140,7 +148,15 @@ Topic: ${prompt}
       return new Response(JSON.stringify({ error }), { status: 500 })
     }
 
-    return new Response(JSON.stringify({ success: true }), { status: 200 })
+    // 5. Mark queue row as used if from scheduled mode
+    if (queueRowId) {
+      await supabase
+        .from("blog_prompt_queue")
+        .update({ is_used: true })
+        .eq("id", queueRowId)
+    }
+
+    return new Response(JSON.stringify({ success: true, source: queueRowId ? "queue" : "manual" }), { status: 200 })
 
   } catch (err) {
     return new Response(JSON.stringify({ error: (err as Error).message }), { status: 500 })
