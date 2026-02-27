@@ -83,6 +83,27 @@ export type Database = {
         }
         Relationships: []
       }
+      blog_prompt_queue: {
+        Row: {
+          created_at: string
+          id: string
+          is_used: boolean | null
+          prompt: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_used?: boolean | null
+          prompt: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_used?: boolean | null
+          prompt?: string
+        }
+        Relationships: []
+      }
       inquiries: {
         Row: {
           created_at: string
