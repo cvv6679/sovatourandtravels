@@ -68,9 +68,9 @@ const Blog = () => {
                 >
                   <Link to={`/blog/${post.slug}`}>
                     <div className="aspect-video overflow-hidden">
-                      {post.featured_image_url ? (
+                      {(post.featured_image || post.featured_image_url) ? (
                         <img
-                          src={post.featured_image_url}
+                          src={post.featured_image || post.featured_image_url}
                           alt={post.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           loading="lazy"
