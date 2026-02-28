@@ -28,14 +28,14 @@ serve(async (req) => {
       og_title,
       og_description,
       focus_keyword,
-      image_url, // 👈 NEW
+      image_url,
     } = body;
 
     const now = new Date().toISOString();
 
-    let uploadedImageUrl: string | null = null;
+    let uploadedImageUrl = null;
 
-    // 👇 IMAGE DOWNLOAD + UPLOAD
+    // 🔥 IMAGE UPLOAD LOGIC
     if (image_url) {
       const imageResponse = await fetch(image_url);
       const imageBuffer = await imageResponse.arrayBuffer();
