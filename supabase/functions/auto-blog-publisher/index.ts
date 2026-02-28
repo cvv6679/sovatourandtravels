@@ -39,7 +39,11 @@ serve(async (req) => {
       slug,
       excerpt,
       content,
-      featured_image_url,
+
+      // 🔥 Write to BOTH columns for compatibility
+      featured_image: featured_image_url,
+      featured_image_url: featured_image_url,
+
       og_image,
       category,
       author,
@@ -59,7 +63,9 @@ serve(async (req) => {
       return new Response(JSON.stringify({ error }), { status: 500 });
     }
 
-    return new Response(JSON.stringify({ success: true }), { status: 200 });
+    return new Response(JSON.stringify({ success: true }), {
+      status: 200,
+    });
   } catch (err) {
     return new Response(JSON.stringify({ error: (err as Error).message }), { status: 500 });
   }
