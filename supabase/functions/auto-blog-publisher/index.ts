@@ -13,6 +13,7 @@ serve(async (req) => {
     const supabase = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 
     const body = await req.json();
+    console.log("Incoming body:", body);
 
     const {
       title,
@@ -34,9 +35,9 @@ serve(async (req) => {
     const now = new Date().toISOString();
     let uploadedImageUrl: string | null = null;
 
-    // ==================================
-    // 🔥 IMAGE DOWNLOAD + STORAGE UPLOAD
-    // ==================================
+    // =============================
+    // 🔥 IMAGE DOWNLOAD + UPLOAD
+    // =============================
     if (image_url) {
       console.log("Image URL received:", image_url);
 
@@ -52,6 +53,8 @@ serve(async (req) => {
         const arrayBuffer = await imageResponse.arrayBuffer();
         const uint8Array = new Uint8Array(arrayBuffer);
 
+        console.log("Image size:", uint8Array.length);
+
         const fileName = `${slug}-${Date.now()}.jpg`;
 
         const { error: uploadError } = await supabase.storage.from("blog-images").upload(fileName, uint8Array, {
@@ -65,22 +68,26 @@ serve(async (req) => {
           const { data } = supabase.storage.from("blog-images").getPublicUrl(fileName);
 
           uploadedImageUrl = data.publicUrl;
-          console.log("Uploaded Image URL:", uploadedImageUrl);
+          console.log("Public URL generated:", uploadedImageUrl);
         }
       } else {
-        console.log("Image fetch failed");
+        console.log("Image fetch failed.");
       }
+    } else {
+      console.log("No image_url received.");
     }
 
-    // ==================================
-    // 📝 INSERT BLOG INTO DATABASE
-    // ==================================
+    console.log("Final value going to DB:", uploadedImageUrl);
+
+    // =============================
+    // 📝 INSERT INTO DATABASE
+    // =============================
     const { error } = await supabase.from("blog_posts").insert({
       title,
       slug,
       excerpt,
       content,
-      featured_image_url: uploadedImageUrl, // ✅ FIXED COLUMN NAME
+      featured_image_url: uploadedImageUrl, // ✅ Correct column
       og_image: uploadedImageUrl,
       category,
       author,
