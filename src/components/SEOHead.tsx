@@ -7,6 +7,7 @@ interface SEOHeadProps {
   ogDescription?: string;
   ogImage?: string;
   ogUrl?: string;
+  ogType?: string;
   canonical?: string;
   jsonLd?: object;
 }
@@ -16,8 +17,9 @@ const SEOHead = ({
   description,
   ogTitle,
   ogDescription,
-  ogImage = "https://sovatourandtravels.lovable.app/logo.PNG",
+  ogImage = "https://sovatourandtravels.com/logo.PNG",
   ogUrl,
+  ogType = "website",
   canonical,
   jsonLd,
 }: SEOHeadProps) => {
@@ -40,7 +42,8 @@ const SEOHead = ({
     setMeta("og:description", ogDescription || description, true);
     setMeta("og:image", ogImage, true);
     if (ogUrl) setMeta("og:url", ogUrl, true);
-    setMeta("og:type", "website", true);
+    setMeta("og:type", ogType, true);
+    setMeta("og:site_name", "Sova Tour & Travels", true);
     setMeta("twitter:card", "summary_large_image");
     setMeta("twitter:title", ogTitle || title);
     setMeta("twitter:description", ogDescription || description);
