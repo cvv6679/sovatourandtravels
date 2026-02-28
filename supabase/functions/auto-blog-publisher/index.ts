@@ -33,26 +33,56 @@ serve(async (req) => {
 
     const now = new Date().toISOString();
 
-    let uploadedImageUrl = null;
+    let uploadedImageUrl: string | null = null;
 
-    // 🔥 IMAGE UPLOAD LOGIC
+    // =============================
+    // 🔥 IMAGE DOWNLOAD + UPLOAD
+    // =============================
     if (image_url) {
-      const imageResponse = await fetch(image_url);
-      const imageBuffer = await imageResponse.arrayBuffer();
+      console.log("Image URL received:", image_url);
 
-      const fileName = `${slug}-${Date.now()}.jpg`;
-
-      const { error: uploadError } = await supabase.storage.from("blog-images").upload(fileName, imageBuffer, {
-        contentType: "image/jpeg",
+      const imageResponse = await fetch(image_url, {
+        headers: {
+          "User-Agent": "SovaToursBot/1.0",
+        },
       });
 
-      if (!uploadError) {
-        const { data } = supabase.storage.from("blog-images").getPublicUrl(fileName);
+      console.log("Fetch status:", imageResponse.status);
 
-        uploadedImageUrl = data.publicUrl;
+      if (!imageResponse.ok) {
+        console.log("Image fetch failed");
+      } else {
+        const arrayBuffer = await imageResponse.arrayBuffer();
+        const uint8Array = new Uint8Array(arrayBuffer);
+
+        console.log("Image size:", uint8Array.length);
+
+        const fileName = `${slug}-${Date.now()}.jpg`;
+
+        const { data: uploadData, error: uploadError } = await supabase.storage
+          .from("blog-images")
+          .upload(fileName, uint8Array, {
+            contentType: "image/jpeg",
+            upsert: true,
+          });
+
+        if (uploadError) {
+          console.log("Upload error:", uploadError);
+        } else {
+          console.log("Upload success:", uploadData);
+
+          const { data } = supabase.storage.from("blog-images").getPublicUrl(fileName);
+
+          uploadedImageUrl = data.publicUrl;
+
+          console.log("Public URL:", uploadedImageUrl);
+        }
       }
     }
 
+    // =============================
+    // 📝 INSERT BLOG
+    // =============================
     const { error } = await supabase.from("blog_posts").insert({
       title,
       slug,
@@ -75,11 +105,13 @@ serve(async (req) => {
     });
 
     if (error) {
+      console.log("DB Insert error:", error);
       return new Response(JSON.stringify({ error }), { status: 500 });
     }
 
     return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (err) {
+    console.log("Function error:", err);
     return new Response(JSON.stringify({ error: (err as Error).message }), { status: 500 });
   }
 });
