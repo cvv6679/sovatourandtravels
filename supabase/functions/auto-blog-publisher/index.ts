@@ -2,7 +2,6 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 serve(async (req) => {
-  // API key validation
   const apiKey = req.headers.get("x-api-key");
   const expectedKey = Deno.env.get("INTERNAL_API_SECRET");
 
@@ -20,7 +19,6 @@ serve(async (req) => {
       slug,
       excerpt,
       content,
-      featured_image,
       category,
       author,
       is_published,
@@ -29,18 +27,39 @@ serve(async (req) => {
       meta_description,
       og_title,
       og_description,
-      og_image,
       focus_keyword,
+      image_url, // 👈 NEW
     } = body;
 
     const now = new Date().toISOString();
+
+    let uploadedImageUrl: string | null = null;
+
+    // 👇 IMAGE DOWNLOAD + UPLOAD
+    if (image_url) {
+      const imageResponse = await fetch(image_url);
+      const imageBuffer = await imageResponse.arrayBuffer();
+
+      const fileName = `${slug}-${Date.now()}.jpg`;
+
+      const { error: uploadError } = await supabase.storage.from("blog-images").upload(fileName, imageBuffer, {
+        contentType: "image/jpeg",
+      });
+
+      if (!uploadError) {
+        const { data } = supabase.storage.from("blog-images").getPublicUrl(fileName);
+
+        uploadedImageUrl = data.publicUrl;
+      }
+    }
 
     const { error } = await supabase.from("blog_posts").insert({
       title,
       slug,
       excerpt,
       content,
-      featured_image,
+      featured_image: uploadedImageUrl,
+      og_image: uploadedImageUrl,
       category,
       author,
       is_published,
@@ -49,7 +68,6 @@ serve(async (req) => {
       meta_description,
       og_title,
       og_description,
-      og_image,
       focus_keyword,
       ai_generated: true,
       created_at: now,
