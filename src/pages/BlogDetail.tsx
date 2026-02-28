@@ -40,7 +40,7 @@ const BlogDetail = () => {
     );
   }
 
-  const postUrl = `https://sovatourandtravels.lovable.app/blog/${post.slug}`;
+  const postUrl = `https://sovatourandtravels.com/blog/${post.slug}`;
   const blogPostSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -51,7 +51,7 @@ const BlogDetail = () => {
     publisher: {
       "@type": "Organization",
       name: "Sova Tour & Travels",
-      logo: { "@type": "ImageObject", url: "https://sovatourandtravels.lovable.app/logo.PNG" },
+      logo: { "@type": "ImageObject", url: "https://sovatourandtravels.com/logo.PNG" },
     },
     datePublished: post.publish_date,
     dateModified: post.updated_at,
@@ -75,6 +75,7 @@ const BlogDetail = () => {
         ogDescription={post.og_description || post.excerpt || ""}
         ogImage={post.og_image || post.featured_image_url || undefined}
         ogUrl={postUrl}
+        ogType="article"
         canonical={postUrl}
         jsonLd={blogPostSchema}
       />
