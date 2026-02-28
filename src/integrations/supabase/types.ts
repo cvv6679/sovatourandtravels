@@ -23,6 +23,7 @@ export type Database = {
           content_bn_html: string | null
           created_at: string
           excerpt: string | null
+          featured_image: string | null
           featured_image_url: string | null
           focus_keyword: string | null
           id: string
@@ -45,6 +46,7 @@ export type Database = {
           content_bn_html?: string | null
           created_at?: string
           excerpt?: string | null
+          featured_image?: string | null
           featured_image_url?: string | null
           focus_keyword?: string | null
           id?: string
@@ -67,6 +69,7 @@ export type Database = {
           content_bn_html?: string | null
           created_at?: string
           excerpt?: string | null
+          featured_image?: string | null
           featured_image_url?: string | null
           focus_keyword?: string | null
           id?: string
