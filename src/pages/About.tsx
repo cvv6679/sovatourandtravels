@@ -1,9 +1,40 @@
- import { motion } from "framer-motion";
- import { MapPin, Users, Award, Heart } from "lucide-react";
- import Header from "@/components/Header";
- import Footer from "@/components/Footer";
- import WhatsAppButton from "@/components/WhatsAppButton";
- import SEOHead from "@/components/SEOHead";
+import { motion } from "framer-motion";
+import { MapPin, Users, Award, Heart } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import SEOHead from "@/components/SEOHead";
+import teamAtiur from "@/assets/team-atiur.jpg";
+import teamSudip from "@/assets/team-sudip.jpg";
+import teamMurshed from "@/assets/team-murshed.jpg";
+import teamRizu from "@/assets/team-rizu.jpg";
+
+const teamMembers = [
+  {
+    name: "Atiur Rahaman",
+    title: "Founder & Managing Director",
+    description: "Visionary entrepreneur and founder of Sova Tours & Travels. Leads company strategy, partnerships, and business expansion with a strong focus on customer satisfaction and sustainable travel experiences.",
+    photo: teamAtiur,
+  },
+  {
+    name: "Sudip Bhakat",
+    title: "Head of Marketing & Growth",
+    description: "Responsible for digital marketing, brand positioning, and customer acquisition strategies. Drives campaign performance, partnerships, and online visibility to grow the Sova brand.",
+    photo: teamSudip,
+  },
+  {
+    name: "Murshed Ahamed",
+    title: "Senior Website Developer & Technology Lead",
+    description: "Oversees website design, development, automation, and technical infrastructure. Ensures smooth booking experience, performance optimization, and digital innovation.",
+    photo: teamMurshed,
+  },
+  {
+    name: "Rizu SK",
+    title: "Senior Tour Coordinator & Operations Manager",
+    description: "Manages tour planning, itinerary coordination, and on-ground operations. Ensures seamless travel experiences, vendor management, and customer support excellence.",
+    photo: teamRizu,
+  },
+];
  
  const About = () => {
    return (
@@ -170,7 +201,55 @@
          </div>
        </section>
  
-       <Footer />
+        {/* Meet Our Team */}
+        <section className="section-padding">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <span className="text-primary font-medium text-sm uppercase tracking-wider">Our People</span>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mt-2">
+                Meet Our Team
+              </h2>
+            </motion.div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {teamMembers.map((member, index) => (
+                <motion.div
+                  key={member.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-card rounded-2xl p-6 text-center card-shadow hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-primary/20">
+                    <img
+                      src={member.photo}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <h3 className="font-display font-bold text-lg text-card-foreground">
+                    {member.name}
+                  </h3>
+                  <p className="text-primary font-medium text-sm mt-1">
+                    {member.title}
+                  </p>
+                  <p className="text-muted-foreground text-sm mt-3 leading-relaxed">
+                    {member.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
      </div>
    );
  };
