@@ -1,3 +1,12 @@
+import destGoa from "@/assets/dest-goa.jpg";
+import destKashmir from "@/assets/dest-kashmir.jpg";
+import destBangkok from "@/assets/dest-bangkok.jpg";
+import destDubai from "@/assets/dest-dubai.jpg";
+import destEurope from "@/assets/dest-europe.jpg";
+import destKerala from "@/assets/dest-kerala.jpg";
+import destMalaysia from "@/assets/dest-malaysia.jpg";
+import destPhuket from "@/assets/dest-phuket.jpg";
+
 export interface DestinationSpot {
   name: string;
   description: string;
@@ -27,8 +36,8 @@ export const destinations: Destination[] = [
     slug: "goa",
     name: "Goa",
     tagline: "Sun, Sand & Vibrant Culture",
-    cardImage: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&q=80",
-    heroImage: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=1920&q=80",
+    cardImage: destGoa,
+    heroImage: destGoa,
     bestTime: "October to March",
     idealDuration: "4–6 Days",
     overview: `Goa, India's smallest state on the western coast, is a paradise that seamlessly blends Portuguese colonial heritage with tropical Indian charm. Known for its pristine beaches stretching along the Arabian Sea, vibrant nightlife, centuries-old churches, and lush spice plantations, Goa offers an experience unlike any other destination in India. Whether you're a backpacker seeking adventure, a couple looking for romance, or a family wanting relaxation, Goa has something magical for everyone.
@@ -39,10 +48,10 @@ Goa's unique identity stems from over 450 years of Portuguese rule, visible in i
 
 For food enthusiasts, Goa is a culinary haven. From fish curry rice — the staple Goan meal — to pork vindaloo, bebinca dessert, and feni (cashew liquor), the flavors here are bold and unforgettable. The beach shacks serving fresh seafood with your toes in the sand are an experience in themselves.`,
     topSpots: [
-      { name: "Basilica of Bom Jesus", description: "UNESCO World Heritage church housing St. Francis Xavier's remains, a masterpiece of Baroque architecture.", image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=500&q=80" },
-      { name: "Dudhsagar Falls", description: "A breathtaking four-tiered waterfall on the Mandovi River, one of India's tallest at 310 meters.", image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=500&q=80" },
-      { name: "Anjuna Beach", description: "Famous for its Wednesday flea market, trance parties, and stunning rocky coastline.", image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&q=80" },
-      { name: "Fort Aguada", description: "A well-preserved 17th-century Portuguese fort offering panoramic views of the Arabian Sea.", image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=500&q=80" },
+      { name: "Basilica of Bom Jesus", description: "UNESCO World Heritage church housing St. Francis Xavier's remains, a masterpiece of Baroque architecture.", image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=500&h=300&fit=crop&q=80" },
+      { name: "Dudhsagar Falls", description: "A breathtaking four-tiered waterfall on the Mandovi River, one of India's tallest at 310 meters.", image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=500&h=300&fit=crop&q=80" },
+      { name: "Anjuna Beach", description: "Famous for its Wednesday flea market, trance parties, and stunning rocky coastline.", image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=500&h=300&fit=crop&q=80" },
+      { name: "Fort Aguada", description: "A well-preserved 17th-century Portuguese fort offering panoramic views of the Arabian Sea.", image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=500&h=300&fit=crop&q=80" },
     ],
     thingsToDo: [
       "Relax on Palolem and Calangute beaches",
@@ -63,12 +72,12 @@ For food enthusiasts, Goa is a culinary haven. From fish curry rice — the stap
       "Book accommodations in advance during peak season (December–January).",
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&q=80",
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80",
-      "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&q=80",
-      "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=600&q=80",
-      "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80",
-      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80",
+      "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=600&fit=crop&q=80",
     ],
     seoTitle: "Goa Travel Guide - Best Beaches, Things to Do & Travel Tips",
     seoDescription: "Complete Goa travel guide with best beaches, top attractions, things to do, travel tips, and ideal itinerary. Plan your perfect Goa trip with Sova Tours.",
@@ -78,8 +87,8 @@ For food enthusiasts, Goa is a culinary haven. From fish curry rice — the stap
     slug: "kashmir",
     name: "Kashmir",
     tagline: "Paradise on Earth",
-    cardImage: "https://images.unsplash.com/photo-1597074866923-dc0589150358?w=600&q=80",
-    heroImage: "https://images.unsplash.com/photo-1597074866923-dc0589150358?w=1920&q=80",
+    cardImage: destKashmir,
+    heroImage: destKashmir,
     bestTime: "March to October",
     idealDuration: "5–7 Days",
     overview: `Kashmir, often called "Paradise on Earth," is a land of breathtaking beauty nestled in the northernmost part of India. From the serene Dal Lake with its iconic houseboats and shikaras to the snow-capped peaks of the Himalayas, Kashmir offers a visual spectacle that has inspired poets, artists, and travelers for centuries. The valley's lush meadows, pristine rivers, and ancient Mughal gardens create a landscape so stunning it feels almost surreal.
@@ -90,10 +99,10 @@ Beyond Srinagar, the valley unfolds into destinations of extraordinary beauty. G
 
 Kashmiri cuisine is another highlight — the traditional Wazwan feast features 36 courses of aromatic, richly spiced dishes. The famous Rogan Josh, Yakhni, and Kahwa tea are culinary treasures. The warmth and hospitality of Kashmiri people make every visitor feel at home in this mountain paradise.`,
     topSpots: [
-      { name: "Dal Lake", description: "Iconic lake with ornate houseboats, floating gardens, and mesmerizing shikara rides at sunrise.", image: "https://images.unsplash.com/photo-1597074866923-dc0589150358?w=500&q=80" },
-      { name: "Gulmarg", description: "World-famous ski resort with the highest gondola ride in Asia and stunning meadows.", image: "https://images.unsplash.com/photo-1580289648711-3501e91e1e00?w=500&q=80" },
-      { name: "Pahalgam", description: "Valley of Shepherds offering river rafting, horse riding, and the base for Amarnath Yatra.", image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=500&q=80" },
-      { name: "Sonamarg", description: "Golden Meadow at 2800m altitude with Thajiwas Glacier and crystal-clear streams.", image: "https://images.unsplash.com/photo-1605540436563-5bca919ae766?w=500&q=80" },
+      { name: "Dal Lake", description: "Iconic lake with ornate houseboats, floating gardens, and mesmerizing shikara rides at sunrise.", image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=500&h=300&fit=crop&q=80" },
+      { name: "Gulmarg", description: "World-famous ski resort with the highest gondola ride in Asia and stunning meadows.", image: "https://images.unsplash.com/photo-1580289648711-3501e91e1e00?w=500&h=300&fit=crop&q=80" },
+      { name: "Pahalgam", description: "Valley of Shepherds offering river rafting, horse riding, and the base for Amarnath Yatra.", image: "https://images.unsplash.com/photo-1605540436563-5bca919ae766?w=500&h=300&fit=crop&q=80" },
+      { name: "Sonamarg", description: "Golden Meadow at 2800m altitude with Thajiwas Glacier and crystal-clear streams.", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop&q=80" },
     ],
     thingsToDo: [
       "Take a shikara ride on Dal Lake at sunrise",
@@ -114,12 +123,12 @@ Kashmiri cuisine is another highlight — the traditional Wazwan feast features 
       "Respect local customs and dress modestly when visiting religious sites.",
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1597074866923-dc0589150358?w=600&q=80",
-      "https://images.unsplash.com/photo-1580289648711-3501e91e1e00?w=600&q=80",
-      "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=600&q=80",
-      "https://images.unsplash.com/photo-1605540436563-5bca919ae766?w=600&q=80",
-      "https://images.unsplash.com/photo-1566837945700-30057527ade0?w=600&q=80",
-      "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80",
+      "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1580289648711-3501e91e1e00?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1605540436563-5bca919ae766?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=600&fit=crop&q=80",
     ],
     seoTitle: "Kashmir Travel Guide - Paradise on Earth | Best Places & Tips",
     seoDescription: "Explore Kashmir with our complete travel guide. Dal Lake houseboats, Gulmarg skiing, Pahalgam valleys, best time to visit, and expert travel tips.",
@@ -129,8 +138,8 @@ Kashmiri cuisine is another highlight — the traditional Wazwan feast features 
     slug: "bangkok",
     name: "Bangkok",
     tagline: "The City of Angels",
-    cardImage: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&q=80",
-    heroImage: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=1920&q=80",
+    cardImage: destBangkok,
+    heroImage: destBangkok,
     bestTime: "November to February",
     idealDuration: "3–5 Days",
     overview: `Bangkok, the pulsating capital of Thailand, is a city of contrasts where ancient temples stand alongside gleaming skyscrapers, and street food stalls serve dishes that rival five-star restaurants. Known as "Krung Thep" (City of Angels) to locals, Bangkok is a sensory overload in the best possible way — the aromas of pad thai sizzling in woks, the glitter of golden spires, and the buzz of tuk-tuks navigating labyrinthine streets.
@@ -141,10 +150,10 @@ Bangkok's shopping scene ranges from luxury malls like Siam Paragon to the legen
 
 But perhaps Bangkok's greatest treasure is its food. The city has been consistently ranked among the world's best food destinations. From Michelin-starred street food vendors like Jay Fai to humble pad thai stalls on every corner, Bangkok rewards the adventurous eater at every turn.`,
     topSpots: [
-      { name: "Grand Palace", description: "A dazzling complex of buildings that served as the official residence of Thai kings since 1782.", image: "https://images.unsplash.com/photo-1563492065599-3520f775eeed?w=500&q=80" },
-      { name: "Wat Arun", description: "The Temple of Dawn, adorned with colorful porcelain and offering stunning riverside views.", image: "https://images.unsplash.com/photo-1528181304800-259b08848526?w=500&q=80" },
-      { name: "Chatuchak Market", description: "One of the world's largest weekend markets with over 15,000 stalls selling everything.", image: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=500&q=80" },
-      { name: "Khao San Road", description: "The legendary backpacker hub famous for its vibrant nightlife and eclectic energy.", image: "https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=500&q=80" },
+      { name: "Grand Palace", description: "A dazzling complex of buildings that served as the official residence of Thai kings since 1782.", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=500&h=300&fit=crop&q=80" },
+      { name: "Wat Arun", description: "The Temple of Dawn, adorned with colorful porcelain and offering stunning riverside views.", image: "https://images.unsplash.com/photo-1528181304800-259b08848526?w=500&h=300&fit=crop&q=80" },
+      { name: "Chatuchak Market", description: "One of the world's largest weekend markets with over 15,000 stalls selling everything.", image: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=500&h=300&fit=crop&q=80" },
+      { name: "Khao San Road", description: "The legendary backpacker hub famous for its vibrant nightlife and eclectic energy.", image: "https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=500&h=300&fit=crop&q=80" },
     ],
     thingsToDo: [
       "Visit the Grand Palace and Wat Phra Kaew",
@@ -165,12 +174,12 @@ But perhaps Bangkok's greatest treasure is its food. The city has been consisten
       "Carry a small umbrella — sudden rain showers are common even in dry season.",
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&q=80",
-      "https://images.unsplash.com/photo-1563492065599-3520f775eeed?w=600&q=80",
-      "https://images.unsplash.com/photo-1528181304800-259b08848526?w=600&q=80",
-      "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=600&q=80",
-      "https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=600&q=80",
-      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80",
+      "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1528181304800-259b08848526?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1563492065599-3520f775eeed?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&h=600&fit=crop&q=80",
     ],
     seoTitle: "Bangkok Travel Guide - Temples, Street Food & Nightlife Tips",
     seoDescription: "Plan your Bangkok trip with our complete guide. Grand Palace, street food tours, Chatuchak Market, nightlife, travel tips, and best time to visit.",
@@ -180,8 +189,8 @@ But perhaps Bangkok's greatest treasure is its food. The city has been consisten
     slug: "dubai",
     name: "Dubai",
     tagline: "City of the Future",
-    cardImage: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80",
-    heroImage: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&q=80",
+    cardImage: destDubai,
+    heroImage: destDubai,
     bestTime: "November to March",
     idealDuration: "4–6 Days",
     overview: `Dubai, the crown jewel of the United Arab Emirates, is a city that defies imagination. Rising from the Arabian Desert, this ultramodern metropolis is home to the world's tallest building (Burj Khalifa), the largest shopping mall (Dubai Mall), and man-made islands visible from space (Palm Jumeirah). Yet beneath its futuristic exterior lies a city deeply rooted in Bedouin traditions and Arabic hospitality.
@@ -192,10 +201,10 @@ Dubai's dining scene is a microcosm of the world, with over 200 nationalities ca
 
 For adventure seekers, Dubai delivers in spectacular fashion. Desert safaris with dune bashing, sandboarding, and Bedouin-style camping under the stars are quintessential experiences. The city also offers indoor skiing at Ski Dubai, skydiving over the Palm, and shark diving at the Dubai Aquarium.`,
     topSpots: [
-      { name: "Burj Khalifa", description: "The world's tallest building at 828 meters, offering breathtaking observation deck views.", image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=80" },
-      { name: "Palm Jumeirah", description: "Iconic man-made island shaped like a palm tree, home to luxury resorts and Aquaventure.", image: "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=500&q=80" },
-      { name: "Dubai Marina", description: "Stunning waterfront district with skyscrapers, dining, and yacht cruises.", image: "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=500&q=80" },
-      { name: "Old Dubai", description: "Historic Al Fahidi district with traditional wind-tower architecture and the Dubai Museum.", image: "https://images.unsplash.com/photo-1548180823-2a2c59c54ae4?w=500&q=80" },
+      { name: "Burj Khalifa", description: "The world's tallest building at 828 meters, offering breathtaking observation deck views.", image: "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=500&h=300&fit=crop&q=80" },
+      { name: "Palm Jumeirah", description: "Iconic man-made island shaped like a palm tree, home to luxury resorts and Aquaventure.", image: "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=500&h=300&fit=crop&q=80" },
+      { name: "Dubai Marina", description: "Stunning waterfront district with skyscrapers, dining, and yacht cruises.", image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&h=300&fit=crop&q=80" },
+      { name: "Old Dubai", description: "Historic Al Fahidi district with traditional wind-tower architecture and the Dubai Museum.", image: "https://images.unsplash.com/photo-1548180823-2a2c59c54ae4?w=500&h=300&fit=crop&q=80" },
     ],
     thingsToDo: [
       "Visit the observation deck of Burj Khalifa",
@@ -216,12 +225,12 @@ For adventure seekers, Dubai delivers in spectacular fashion. Desert safaris wit
       "Book popular attractions online in advance to skip long queues.",
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80",
-      "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=600&q=80",
-      "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=600&q=80",
-      "https://images.unsplash.com/photo-1548180823-2a2c59c54ae4?w=600&q=80",
-      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80",
-      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80",
+      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1548180823-2a2c59c54ae4?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1526495124232-a04e1849168c?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=600&fit=crop&q=80",
     ],
     seoTitle: "Dubai Travel Guide - Burj Khalifa, Desert Safari & Shopping Tips",
     seoDescription: "Complete Dubai travel guide covering Burj Khalifa, desert safaris, Palm Jumeirah, shopping, food, and expert travel tips for your UAE trip.",
@@ -231,8 +240,8 @@ For adventure seekers, Dubai delivers in spectacular fashion. Desert safaris wit
     slug: "europe",
     name: "Europe",
     tagline: "History, Art & Endless Charm",
-    cardImage: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&q=80",
-    heroImage: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1920&q=80",
+    cardImage: destEurope,
+    heroImage: destEurope,
     bestTime: "April to October",
     idealDuration: "10–15 Days",
     overview: `Europe, a continent steeped in millennia of history, art, and culture, is the ultimate dream destination for travelers from around the world. From the romantic boulevards of Paris to the ancient ruins of Rome, the fairy-tale castles of Switzerland to the vibrant nightlife of Barcelona, Europe offers an unparalleled diversity of experiences packed into a relatively compact geography.
@@ -243,10 +252,10 @@ The Schengen visa system makes multi-country travel remarkably convenient. In a 
 
 European cuisine is a journey unto itself — from French patisseries and Italian trattorias to German beer halls and Greek tavernas. Each region takes fierce pride in its culinary traditions, and food markets from La Boqueria in Barcelona to Borough Market in London are destinations in their own right.`,
     topSpots: [
-      { name: "Paris, France", description: "The City of Light, home to the Eiffel Tower, Louvre Museum, and world-class cuisine.", image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=500&q=80" },
-      { name: "Rome, Italy", description: "The Eternal City with the Colosseum, Vatican City, and 2,500 years of history.", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=500&q=80" },
-      { name: "Swiss Alps", description: "Breathtaking mountain scenery with pristine lakes, chocolate, and precision railways.", image: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=500&q=80" },
-      { name: "Barcelona, Spain", description: "Gaudí's architectural masterpieces, vibrant nightlife, and Mediterranean beaches.", image: "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=500&q=80" },
+      { name: "Paris, France", description: "The City of Light, home to the Eiffel Tower, Louvre Museum, and world-class cuisine.", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500&h=300&fit=crop&q=80" },
+      { name: "Rome, Italy", description: "The Eternal City with the Colosseum, Vatican City, and 2,500 years of history.", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=500&h=300&fit=crop&q=80" },
+      { name: "Swiss Alps", description: "Breathtaking mountain scenery with pristine lakes, chocolate, and precision railways.", image: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=500&h=300&fit=crop&q=80" },
+      { name: "Barcelona, Spain", description: "Gaudí's architectural masterpieces, vibrant nightlife, and Mediterranean beaches.", image: "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=500&h=300&fit=crop&q=80" },
     ],
     thingsToDo: [
       "Visit the Eiffel Tower and Louvre Museum in Paris",
@@ -267,12 +276,12 @@ European cuisine is a journey unto itself — from French patisseries and Italia
       "Book popular museums and attractions online to avoid long queues.",
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&q=80",
-      "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&q=80",
-      "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=600&q=80",
-      "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=600&q=80",
-      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80",
-      "https://images.unsplash.com/photo-1473951574080-01fe45ec8571?w=600&q=80",
+      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1473951574080-01fe45ec8571?w=600&h=600&fit=crop&q=80",
     ],
     seoTitle: "Europe Travel Guide - Paris, Rome, Switzerland & More",
     seoDescription: "Plan your Europe trip with our comprehensive guide. Paris, Rome, Swiss Alps, Barcelona, best time to visit, Schengen visa tips, and travel advice.",
@@ -282,8 +291,8 @@ European cuisine is a journey unto itself — from French patisseries and Italia
     slug: "kerala",
     name: "Kerala",
     tagline: "God's Own Country",
-    cardImage: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80",
-    heroImage: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1920&q=80",
+    cardImage: destKerala,
+    heroImage: destKerala,
     bestTime: "September to March",
     idealDuration: "5–7 Days",
     overview: `Kerala, nestled along India's southwestern Malabar Coast, is a tropical paradise that has earned the moniker "God's Own Country" — and for good reason. This slender state stretches between the Arabian Sea and the Western Ghats, creating a landscape of extraordinary beauty: palm-fringed backwaters, mist-covered hill stations, pristine beaches, and lush tea and spice plantations.
@@ -294,10 +303,10 @@ Munnar, a former British hill station perched at 1,500 meters, is blanketed with
 
 Kerala is also the birthplace of Ayurveda, the ancient Indian system of medicine. Ayurvedic resorts across the state offer authentic treatments — from rejuvenation therapies (Panchakarma) to stress-relief massages — using centuries-old techniques and locally sourced herbs.`,
     topSpots: [
-      { name: "Alleppey Backwaters", description: "Cruise on a traditional houseboat through 900km of interconnected canals and lagoons.", image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&q=80" },
-      { name: "Munnar", description: "Misty hill station covered in emerald tea plantations with cool mountain air.", image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=500&q=80" },
-      { name: "Kovalam Beach", description: "Crescent-shaped beach known for its lighthouse, Ayurvedic treatments, and gentle waves.", image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&q=80" },
-      { name: "Periyar Wildlife Sanctuary", description: "Boat safari through a lake surrounded by forests teeming with elephants and tigers.", image: "https://images.unsplash.com/photo-1474511320723-9a56873571b7?w=500&q=80" },
+      { name: "Alleppey Backwaters", description: "Cruise on a traditional houseboat through 900km of interconnected canals and lagoons.", image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&h=300&fit=crop&q=80" },
+      { name: "Munnar", description: "Misty hill station covered in emerald tea plantations with cool mountain air.", image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=500&h=300&fit=crop&q=80" },
+      { name: "Kovalam Beach", description: "Crescent-shaped beach known for its lighthouse, Ayurvedic treatments, and gentle waves.", image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&h=300&fit=crop&q=80" },
+      { name: "Periyar Wildlife Sanctuary", description: "Boat safari through a lake surrounded by forests teeming with elephants and tigers.", image: "https://images.unsplash.com/photo-1474511320723-9a56873571b7?w=500&h=300&fit=crop&q=80" },
     ],
     thingsToDo: [
       "Take an overnight houseboat cruise in Alleppey",
@@ -318,12 +327,12 @@ Kerala is also the birthplace of Ayurveda, the ancient Indian system of medicine
       "KSRTC buses are efficient and cover the entire state affordably.",
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80",
-      "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=80",
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80",
-      "https://images.unsplash.com/photo-1474511320723-9a56873571b7?w=600&q=80",
-      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80",
-      "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80",
+      "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1474511320723-9a56873571b7?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=600&fit=crop&q=80",
     ],
     seoTitle: "Kerala Travel Guide - Backwaters, Munnar & Ayurveda Tips",
     seoDescription: "Discover Kerala with our travel guide. Alleppey backwaters, Munnar tea gardens, Ayurvedic retreats, beaches, and expert tips for God's Own Country.",
@@ -333,8 +342,8 @@ Kerala is also the birthplace of Ayurveda, the ancient Indian system of medicine
     slug: "malaysia",
     name: "Malaysia",
     tagline: "Truly Asia",
-    cardImage: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=600&q=80",
-    heroImage: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=1920&q=80",
+    cardImage: destMalaysia,
+    heroImage: destMalaysia,
     bestTime: "March to October",
     idealDuration: "5–7 Days",
     overview: `Malaysia, the Southeast Asian gem that proudly declares itself "Truly Asia," is a melting pot of Malay, Chinese, Indian, and indigenous cultures that creates one of the most diverse and fascinating travel destinations in the world. From the soaring Petronas Twin Towers to ancient rainforests older than the Amazon, Malaysia packs an extraordinary range of experiences into a country roughly the size of Japan.
@@ -345,10 +354,10 @@ Beyond KL, Malaysia reveals its natural wonders. The islands of Langkawi and Pen
 
 Penang, the food capital of Malaysia, is a UNESCO World Heritage city where colonial architecture meets vibrant street art. Georgetown's streets are a living gallery, with murals and wrought-iron caricatures telling stories of the city's multicultural past.`,
     topSpots: [
-      { name: "Petronas Twin Towers", description: "Iconic 452-meter twin skyscrapers with a sky bridge and observation deck.", image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=500&q=80" },
-      { name: "Langkawi", description: "Archipelago of 99 islands with duty-free shopping, beaches, and sky bridge.", image: "https://images.unsplash.com/photo-1609766857326-18a1dd4c8a81?w=500&q=80" },
-      { name: "Penang Georgetown", description: "UNESCO Heritage city with colonial charm, street art, and legendary food.", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=500&q=80" },
-      { name: "Batu Caves", description: "Limestone caves housing Hindu temples, reached by climbing 272 rainbow-colored steps.", image: "https://images.unsplash.com/photo-1590123596130-87e0e tried?w=500&q=80" },
+      { name: "Petronas Twin Towers", description: "Iconic 452-meter twin skyscrapers with a sky bridge and observation deck.", image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=500&h=300&fit=crop&q=80" },
+      { name: "Langkawi", description: "Archipelago of 99 islands with duty-free shopping, beaches, and sky bridge.", image: "https://images.unsplash.com/photo-1609766857326-18a1dd4c8a81?w=500&h=300&fit=crop&q=80" },
+      { name: "Penang Georgetown", description: "UNESCO Heritage city with colonial charm, street art, and legendary food.", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=500&h=300&fit=crop&q=80" },
+      { name: "Batu Caves", description: "Limestone caves housing Hindu temples, reached by climbing 272 rainbow-colored steps.", image: "https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=500&h=300&fit=crop&q=80" },
     ],
     thingsToDo: [
       "Visit the Petronas Twin Towers observation deck",
@@ -369,12 +378,12 @@ Penang, the food capital of Malaysia, is a UNESCO World Heritage city where colo
       "Remove shoes when entering homes and some shops.",
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=600&q=80",
-      "https://images.unsplash.com/photo-1609766857326-18a1dd4c8a81?w=600&q=80",
-      "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&q=80",
-      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80",
-      "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80",
-      "https://images.unsplash.com/photo-1473951574080-01fe45ec8571?w=600&q=80",
+      "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1609766857326-18a1dd4c8a81?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1473951574080-01fe45ec8571?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=600&fit=crop&q=80",
     ],
     seoTitle: "Malaysia Travel Guide - KL, Langkawi, Penang & Borneo Tips",
     seoDescription: "Plan your Malaysia trip with our guide. Petronas Towers, Langkawi beaches, Penang food, Borneo rainforests, travel tips, and best time to visit.",
@@ -384,8 +393,8 @@ Penang, the food capital of Malaysia, is a UNESCO World Heritage city where colo
     slug: "phuket",
     name: "Phuket",
     tagline: "The Pearl of the Andaman",
-    cardImage: "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=600&q=80",
-    heroImage: "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=1920&q=80",
+    cardImage: destPhuket,
+    heroImage: destPhuket,
     bestTime: "November to April",
     idealDuration: "4–6 Days",
     overview: `Phuket, Thailand's largest island, is a tropical paradise in the Andaman Sea that has earned its reputation as one of Asia's premier beach destinations. Known as the "Pearl of the Andaman," Phuket offers a stunning combination of powder-white beaches, crystal-clear waters, world-class diving, vibrant nightlife, and authentic Thai culture — all wrapped in warm tropical sunshine.
@@ -396,10 +405,10 @@ Phuket's Old Town is a delightful surprise for many visitors. The Sino-Portugues
 
 The waters around Phuket are a gateway to some of the world's most spectacular marine experiences. Day trips to Phi Phi Islands (made famous by "The Beach"), James Bond Island in Phang Nga Bay, and the Similan Islands offer snorkeling and diving among vibrant coral reefs, limestone karsts rising from emerald waters, and diverse marine life including manta rays and whale sharks.`,
     topSpots: [
-      { name: "Phi Phi Islands", description: "Stunning archipelago with Maya Bay, crystal waters, and dramatic limestone cliffs.", image: "https://images.unsplash.com/photo-1537956965359-7573183d1f57?w=500&q=80" },
-      { name: "Phang Nga Bay", description: "Emerald waters dotted with towering limestone karsts, including the famous James Bond Island.", image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=500&q=80" },
-      { name: "Patong Beach", description: "Phuket's most popular beach with vibrant nightlife, water sports, and Bangla Road.", image: "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=500&q=80" },
-      { name: "Big Buddha", description: "45-meter marble statue sitting atop Nakkerd Hill, offering 360-degree island views.", image: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=500&q=80" },
+      { name: "Phi Phi Islands", description: "Stunning archipelago with Maya Bay, crystal waters, and dramatic limestone cliffs.", image: "https://images.unsplash.com/photo-1537956965359-7573183d1f57?w=500&h=300&fit=crop&q=80" },
+      { name: "Phang Nga Bay", description: "Emerald waters dotted with towering limestone karsts, including the famous James Bond Island.", image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=500&h=300&fit=crop&q=80" },
+      { name: "Patong Beach", description: "Phuket's most popular beach with vibrant nightlife, water sports, and Bangla Road.", image: "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=500&h=300&fit=crop&q=80" },
+      { name: "Big Buddha", description: "45-meter marble statue sitting atop Nakkerd Hill, offering 360-degree island views.", image: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=500&h=300&fit=crop&q=80" },
     ],
     thingsToDo: [
       "Take a day trip to Phi Phi Islands",
@@ -420,12 +429,12 @@ The waters around Phuket are a gateway to some of the world's most spectacular m
       "Book Phi Phi and Similan trips in advance during peak season.",
     ],
     gallery: [
-      "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=600&q=80",
-      "https://images.unsplash.com/photo-1537956965359-7573183d1f57?w=600&q=80",
-      "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80",
-      "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=600&q=80",
-      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80",
-      "https://images.unsplash.com/photo-1473951574080-01fe45ec8571?w=600&q=80",
+      "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1537956965359-7573183d1f57?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=600&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?w=600&h=600&fit=crop&q=80",
     ],
     seoTitle: "Phuket Travel Guide - Beaches, Phi Phi Islands & Nightlife Tips",
     seoDescription: "Your complete Phuket travel guide. Best beaches, Phi Phi Islands, Phang Nga Bay, nightlife, Thai food, diving tips, and when to visit.",
