@@ -14,13 +14,13 @@ const teamMembers = [
     name: "Atiur Rahaman",
     title: "Founder & Managing Director",
     description: "Visionary entrepreneur and founder of Sova Tours & Travels. Leads company strategy, partnerships, and business expansion with a strong focus on customer satisfaction and sustainable travel experiences.",
-    photo: teamAtiur,
+    photo: teamRizu,
   },
   {
     name: "Sudip Bhakat",
     title: "Head of Marketing & Growth",
     description: "Responsible for digital marketing, brand positioning, and customer acquisition strategies. Drives campaign performance, partnerships, and online visibility to grow the Sova brand.",
-    photo: teamSudip,
+    photo: teamAtiur,
   },
   {
     name: "Murshed Ahamed",
@@ -32,7 +32,7 @@ const teamMembers = [
     name: "Rizu SK",
     title: "Senior Tour Coordinator & Operations Manager",
     description: "Manages tour planning, itinerary coordination, and on-ground operations. Ensures seamless travel experiences, vendor management, and customer support excellence.",
-    photo: teamRizu,
+    photo: teamSudip,
   },
 ];
  
