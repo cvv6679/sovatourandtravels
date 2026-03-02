@@ -25,6 +25,7 @@ import Inquiries from "./pages/admin/Inquiries";
 import Team from "./pages/admin/Team";
 import Testimonials from "./pages/admin/Testimonials";
 import BlogPosts from "./pages/admin/BlogPosts";
+import AdminDestinations from "./pages/admin/Destinations";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,7 @@ const App = () => (
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="tours" element={<Tours />} />
+            <Route path="destinations" element={<AdminDestinations />} />
             <Route path="inquiries" element={<Inquiries />} />
             <Route path="testimonials" element={<Testimonials />} />
             <Route path="blog" element={<BlogPosts />} />

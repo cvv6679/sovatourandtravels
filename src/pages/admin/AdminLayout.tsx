@@ -15,12 +15,14 @@ import {
   ChevronRight,
   Star,
   FileText,
+  MapPin,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/tours", label: "Tours", icon: Package },
+  { href: "/admin/destinations", label: "Destinations", icon: MapPin },
   { href: "/admin/inquiries", label: "Inquiries", icon: Inbox },
   { href: "/admin/testimonials", label: "Testimonials", icon: Star },
   { href: "/admin/blog", label: "Blog", icon: FileText },
