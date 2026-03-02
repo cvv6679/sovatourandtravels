@@ -1,8 +1,23 @@
 import { motion } from "framer-motion";
 import DestinationCard from "./DestinationCard";
-import { destinations } from "@/lib/destinationData";
+import { useDestinations } from "@/hooks/useDestinations";
+import { Loader2 } from "lucide-react";
 
 const DestinationsSection = () => {
+  const { data: destinations, isLoading } = useDestinations();
+
+  if (isLoading) {
+    return (
+      <section className="section-padding bg-muted">
+        <div className="container mx-auto px-4 flex justify-center py-12">
+          <Loader2 className="w-8 h-8 animate-spin text-primary" />
+        </div>
+      </section>
+    );
+  }
+
+  if (!destinations?.length) return null;
+
   return (
     <section className="section-padding bg-muted">
       <div className="container mx-auto px-4">
@@ -36,7 +51,7 @@ const DestinationsSection = () => {
                 slug={dest.slug}
                 name={dest.name}
                 tagline={dest.tagline}
-                image={dest.cardImage}
+                image={dest.card_image || "/placeholder.svg"}
               />
             </motion.div>
           ))}
