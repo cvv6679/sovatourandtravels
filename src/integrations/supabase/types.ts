@@ -107,6 +107,75 @@ export type Database = {
         }
         Relationships: []
       }
+      destinations: {
+        Row: {
+          best_time: string | null
+          card_image: string | null
+          content: string | null
+          created_at: string
+          gallery: string[] | null
+          hero_image: string | null
+          id: string
+          ideal_duration: string | null
+          is_active: boolean | null
+          name: string
+          overview: string | null
+          seo_description: string | null
+          seo_title: string | null
+          slug: string
+          sort_order: number | null
+          tagline: string
+          things_to_do: string[] | null
+          top_spots: Json | null
+          travel_tips: string[] | null
+          updated_at: string
+        }
+        Insert: {
+          best_time?: string | null
+          card_image?: string | null
+          content?: string | null
+          created_at?: string
+          gallery?: string[] | null
+          hero_image?: string | null
+          id?: string
+          ideal_duration?: string | null
+          is_active?: boolean | null
+          name: string
+          overview?: string | null
+          seo_description?: string | null
+          seo_title?: string | null
+          slug: string
+          sort_order?: number | null
+          tagline?: string
+          things_to_do?: string[] | null
+          top_spots?: Json | null
+          travel_tips?: string[] | null
+          updated_at?: string
+        }
+        Update: {
+          best_time?: string | null
+          card_image?: string | null
+          content?: string | null
+          created_at?: string
+          gallery?: string[] | null
+          hero_image?: string | null
+          id?: string
+          ideal_duration?: string | null
+          is_active?: boolean | null
+          name?: string
+          overview?: string | null
+          seo_description?: string | null
+          seo_title?: string | null
+          slug?: string
+          sort_order?: number | null
+          tagline?: string
+          things_to_do?: string[] | null
+          top_spots?: Json | null
+          travel_tips?: string[] | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       inquiries: {
         Row: {
           created_at: string
