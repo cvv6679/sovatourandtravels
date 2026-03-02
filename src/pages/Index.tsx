@@ -14,6 +14,7 @@ import heroImage from "@/assets/hero-kashmir.jpg";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import DestinationsSection from "@/components/DestinationsSection";
 
 const Index = () => {
   const { data: featuredTours, isLoading: toursLoading } = useFeaturedTours();
@@ -200,8 +201,13 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Destinations */}
+      <div id="destinations">
+        <DestinationsSection />
+      </div>
+
       {/* Why Choose Us */}
-      <section className="section-padding bg-muted">
+      <section className="section-padding bg-background">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

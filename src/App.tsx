@@ -14,6 +14,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import RefundPolicy from "./pages/RefundPolicy";
 import TermsConditions from "./pages/TermsConditions";
 import NotFound from "./pages/NotFound";
+import DestinationDetail from "./pages/DestinationDetail";
 
 // Admin pages
 import AdminLayout from "./pages/admin/AdminLayout";
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/blog/:slug" element={<BlogDetail />} />
           {/* Redirect old /international route to new category filter */}
           <Route path="/international" element={<Navigate to="/packages?category=international" replace />} />
+          <Route path="/destinations/:slug" element={<DestinationDetail />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/refund-policy" element={<RefundPolicy />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />
