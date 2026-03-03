@@ -226,11 +226,11 @@ const teamMembers = [
                   transition={{ delay: index * 0.1 }}
                   className="bg-card rounded-2xl p-6 text-center card-shadow hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                 >
-                  <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-primary/20">
+                  <div className="w-36 h-36 mx-auto mb-4 rounded-full overflow-hidden border-4 border-primary/20">
                     <img
                       src={member.photo}
                       alt={member.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-top"
                       loading="lazy"
                     />
                   </div>
