@@ -26,13 +26,13 @@ const teamMembers = [
     name: "Murshed Ahamed",
     title: "Senior Website Developer & Technology Lead",
     description: "Oversees website design, development, automation, and technical infrastructure. Ensures smooth booking experience, performance optimization, and digital innovation.",
-    photo: teamMurshed,
+    photo: teamRizu,
   },
   {
     name: "Rizu SK",
     title: "Senior Tour Coordinator & Operations Manager",
     description: "Manages tour planning, itinerary coordination, and on-ground operations. Ensures seamless travel experiences, vendor management, and customer support excellence.",
-    photo: teamRizu,
+    photo: teamMurshed,
   },
 ];
  
