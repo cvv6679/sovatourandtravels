@@ -4,10 +4,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import SEOHead from "@/components/SEOHead";
-import teamAtiur from "@/assets/team-atiur.jpg";
-import teamSudip from "@/assets/team-sudip.jpg";
-import teamMurshed from "@/assets/team-murshed.jpg";
-import teamRizu from "@/assets/team-rizu.jpg";
+import teamAtiur from "@/assets/team-atiur-opt.jpg";
+import teamSudip from "@/assets/team-sudip-opt.jpg";
+import teamMurshed from "@/assets/team-murshed-opt.jpg";
+import teamRizu from "@/assets/team-rizu-opt.jpg";
 
 const teamMembers = [
   {
