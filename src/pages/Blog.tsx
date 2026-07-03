@@ -96,6 +96,10 @@ const Blog = () => {
                           alt={post.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           loading="lazy"
+                          onError={(e) => {
+                            const target = e.currentTarget as HTMLImageElement;
+                            target.src = 'https://via.placeholder.com/800x400?text=Image+not+available';
+                          }}
                         />
                       ) : (
                         <div className="w-full h-full bg-gradient-hero flex items-center justify-center">
