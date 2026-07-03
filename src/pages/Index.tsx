@@ -184,11 +184,9 @@ const Index = () => {
                   <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>
-              <a href="https://wa.me/919474025173" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-foreground font-semibold text-lg px-8">
-                  <Phone className="w-5 h-5 mr-2" />
-                  WhatsApp Now
-                </Button>
+              <a href="https://wa.me/919474025173?text=Hi,%20I'm%20interested%20in%20your%20tour%20packages" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-md h-11 px-8 bg-[#25D366] hover:bg-[#1eb858] text-white font-semibold text-lg">
+                <Phone className="w-5 h-5" />
+                WhatsApp Now
               </a>
             </div>
           </motion.div>
@@ -353,11 +351,7 @@ const Index = () => {
                         className="w-10 h-10 rounded-full object-cover"
                       />
                     ) : (
-                      <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                        <span className="font-semibold text-primary">
-                          {testimonial.name.charAt(0)}
-                        </span>
-                      </div>
+                      <img src="/logo.PNG" alt="Sova Tour logo" className="w-10 h-10 object-contain" />
                     )}
                     <div>
                       <p className="font-medium text-card-foreground">{testimonial.name}</p>

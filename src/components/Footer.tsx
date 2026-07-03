@@ -11,9 +11,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-hero rounded-xl flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">S</span>
-              </div>
+              <img src="/logo.PNG" alt="Sova Tour logo" className="w-10 h-10 object-contain" />
               <span className="font-display font-bold text-lg text-background">
                 Sova Tour & Travels
               </span>
