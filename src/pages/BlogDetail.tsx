@@ -84,12 +84,17 @@ const BlogDetail = () => {
 
       {/* Hero */}
       <section className="relative">
-        {post.featured_image_url ? (
+        {post.featured_image || post.featured_image_url ? (
           <div className="h-[40vh] md:h-[50vh]">
             <img
-              src={post.featured_image_url}
+              src={post.featured_image || post.featured_image_url}
               alt={post.title}
               className="w-full h-full object-cover"
+              loading="lazy"
+              onError={(e) => {
+                const target = e.currentTarget as HTMLImageElement;
+                target.src = 'https://via.placeholder.com/800x400?text=Image+not+available';
+              }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-transparent" />
           </div>
@@ -160,6 +165,19 @@ const BlogDetail = () => {
                 prose-hr:border-border prose-hr:my-8"
               dangerouslySetInnerHTML={{ __html: post.content || "" }}
             />
+{/* Related Posts */}
+{post.related_posts && post.related_posts.length > 0 && (
+  <div className="mt-8">
+    <h2 className="text-xl font-semibold mb-4">Related Posts</h2>
+    <ul className="list-disc list-inside">
+      {post.related_posts.map((slug) => (
+        <li key={slug}>
+          <Link to={`/blog/${slug}`} className="text-primary hover:underline">{slug.replace(/-/g, " ")}</Link>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
 
             {/* Share */}
             <div className="mt-10 pt-6 border-t border-border flex items-center justify-between">

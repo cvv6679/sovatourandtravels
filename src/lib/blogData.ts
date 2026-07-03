@@ -13,6 +13,7 @@ export interface BlogPost {
   is_published: boolean;
   meta_title?: string;
   meta_description?: string;
+  related_posts?: string[];
 }
 
 export const staticBlogPosts: BlogPost[] = [
@@ -29,6 +30,8 @@ export const staticBlogPosts: BlogPost[] = [
     meta_title: "Complete Guide: Rampurhat to Kashmir & Ladakh Tours | Sova Tours",
     meta_description: "How to reach Kashmir and Ladakh from Rampurhat & Kolkata. Best routes, budget tips, train itineraries, and direct package bookings.",
     featured_image_url: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=1200&q=80",
+    featured_image: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=1200&q=80",
+    related_posts: ["budget-tips-darjeeling-gangtok", "umrah-pilgrimage-guide-birbhum"],
     content: `
       <h2>Why Visit Kashmir & Ladakh from Rampurhat?</h2>
       <p>Every traveler in West Bengal dreams of experiencing the heaven on earth—Kashmir, along with the high-altitude desert adventure of Ladakh. For families and groups in <strong>Rampurhat, Birbhum, and Kolkata</strong>, organizing such a long trip can sometimes seem overwhelming. At <a href="https://sovatourandtravels.com">Sova Tour & Travels</a>, we specialize in seamless end-to-end itineraries starting right from your hometown.</p>
@@ -68,6 +71,8 @@ export const staticBlogPosts: BlogPost[] = [
     meta_title: "Budget Guide: Rampurhat to Darjeeling & Gangtok | Sova Tours",
     meta_description: "Top tips for budget trips from Rampurhat to Darjeeling and Sikkim. Train routes from RPH to NJP, hotel advice, and package inclusions.",
     featured_image_url: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1200&q=80",
+    featured_image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1200&q=80",
+    related_posts: ["guide-rampurhat-to-kashmir", "umrah-pilgrimage-guide-birbhum"],
     content: `
       <h2>The Gateway to Queen of the Hills</h2>
       <p>One of the most popular weekend and holiday getaways from Birbhum district is Darjeeling and Sikkim. Thanks to frequent trains passing through Rampurhat Junction (RPH) towards New Jalpaiguri (NJP), reaching North Bengal has never been easier or more affordable.</p>
@@ -94,6 +99,8 @@ export const staticBlogPosts: BlogPost[] = [
     meta_title: "Umrah & Hajj Guide from Rampurhat & Birbhum | Sova Tours",
     meta_description: "All-inclusive Umrah and Hajj tour packages from Rampurhat. Guidance on visa, flights from Kolkata, hotel proximity to Haram, and Bengali tour leads.",
     featured_image_url: "https://images.unsplash.com/photo-1565552645632-d725f8bfc19a?auto=format&fit=crop&w=1200&q=80",
+    featured_image: "https://images.unsplash.com/photo-1565552645632-d725f8bfc19a?auto=format&fit=crop&w=1200&q=80",
+    related_posts: ["guide-rampurhat-to-kashmir", "budget-tips-darjeeling-gangtok"],
     content: `
       <h2>Sacred Journeys Made Simple</h2>
       <p>Performing Umrah or Hajj is a momentous spiritual milestone. For families in Birbhum and surrounding districts, having a trusted local agency with physical office presence in Rampurhat ensures complete peace of mind.</p>
