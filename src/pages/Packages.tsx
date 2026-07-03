@@ -21,7 +21,8 @@ const Packages = () => {
   const [search, setSearch] = useState("");
   const [destination, setDestination] = useState("all");
   const [duration, setDuration] = useState("all");
-  const [priceRange, setPriceRange] = useState("all");
+  const [budgetRange, setBudgetRange] = useState("all");
+  const [tripType, setTripType] = useState("all"); // domestic / international
   const [sortBy, setSortBy] = useState("popular");
   const [showFilters, setShowFilters] = useState(false);
 
@@ -32,7 +33,7 @@ const Packages = () => {
 
   const filteredTours = useMemo(() => {
     if (!tours) return [];
-    
+
     let filtered = [...tours];
 
     // Category filter from URL
@@ -54,24 +55,29 @@ const Packages = () => {
       filtered = filtered.filter((t) => t.destination === destination);
     }
 
+    // Trip type filter (domestic / international)
+    if (tripType !== "all") {
+      filtered = filtered.filter((t) => t.category.toLowerCase() === tripType);
+    }
+
     // Duration filter
     if (duration !== "all") {
-      if (duration === "3-5") {
-        filtered = filtered.filter((t) => t.duration_days >= 3 && t.duration_days <= 5);
-      } else if (duration === "6-8") {
-        filtered = filtered.filter((t) => t.duration_days >= 6 && t.duration_days <= 8);
-      } else if (duration === "9+") {
-        filtered = filtered.filter((t) => t.duration_days >= 9);
+      if (duration === "1-3") {
+        filtered = filtered.filter((t) => t.duration_days >= 1 && t.duration_days <= 3);
+      } else if (duration === "4-7") {
+        filtered = filtered.filter((t) => t.duration_days >= 4 && t.duration_days <= 7);
+      } else if (duration === "8+") {
+        filtered = filtered.filter((t) => t.duration_days >= 8);
       }
     }
 
-    // Price filter
-    if (priceRange !== "all") {
-      if (priceRange === "under10k") {
+    // Budget (price) filter
+    if (budgetRange !== "all") {
+      if (budgetRange === "under10k") {
         filtered = filtered.filter((t) => t.discounted_price_inr < 10000);
-      } else if (priceRange === "10k-20k") {
+      } else if (budgetRange === "10k-20k") {
         filtered = filtered.filter((t) => t.discounted_price_inr >= 10000 && t.discounted_price_inr <= 20000);
-      } else if (priceRange === "above20k") {
+      } else if (budgetRange === "above20k") {
         filtered = filtered.filter((t) => t.discounted_price_inr > 20000);
       }
     }
@@ -89,17 +95,18 @@ const Packages = () => {
     }
 
     return filtered;
-  }, [tours, search, destination, duration, priceRange, sortBy, categoryFilter]);
+  }, [tours, search, destination, duration, budgetRange, tripType, sortBy, categoryFilter]);
 
   const clearFilters = () => {
     setSearch("");
     setDestination("all");
     setDuration("all");
-    setPriceRange("all");
+    setBudgetRange("all");
+    setTripType("all");
     setSortBy("popular");
   };
 
-  const hasActiveFilters = search || destination !== "all" || duration !== "all" || priceRange !== "all";
+  const hasActiveFilters = search || destination !== "all" || duration !== "all" || budgetRange !== "all" || tripType !== "all";
 
   const pageTitle = categoryFilter
     ? `${categoryFilter.charAt(0).toUpperCase() + categoryFilter.slice(1)} Tours`
@@ -151,10 +158,7 @@ const Packages = () => {
       {/* Hero */}
       <section className="bg-gradient-hero py-16 md:py-24">
         <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <h1 className="font-display text-3xl md:text-5xl font-bold text-primary-foreground mb-4">
               {pageTitle}
             </h1>
@@ -181,17 +185,14 @@ const Packages = () => {
             </div>
 
             {/* Mobile Filter Toggle */}
-            <Button
-              variant="outline"
-              className="lg:hidden"
-              onClick={() => setShowFilters(!showFilters)}
-            >
+            <Button variant="outline" className="lg:hidden" onClick={() => setShowFilters(!showFilters)}>
               <SlidersHorizontal className="w-4 h-4 mr-2" />
               Filters
             </Button>
 
             {/* Desktop Filters */}
             <div className={`flex-wrap gap-3 ${showFilters ? "flex" : "hidden lg:flex"} w-full lg:w-auto`}>
+              {/* Destination */}
               <Select value={destination} onValueChange={setDestination}>
                 <SelectTrigger className="w-full lg:w-[150px]">
                   <SelectValue placeholder="Destination" />
@@ -199,35 +200,52 @@ const Packages = () => {
                 <SelectContent>
                   <SelectItem value="all">All Destinations</SelectItem>
                   {destinations.map((d) => (
-                    <SelectItem key={d} value={d}>{d}</SelectItem>
+                    <SelectItem key={d} value={d}>
+                      {d}
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
 
+              {/* Trip Type */}
+              <Select value={tripType} onValueChange={setTripType}>
+                <SelectTrigger className="w-full lg:w-[150px]">
+                  <SelectValue placeholder="Type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Types</SelectItem>
+                  <SelectItem value="domestic">Domestic</SelectItem>
+                  <SelectItem value="international">International</SelectItem>
+                </SelectContent>
+              </Select>
+
+              {/* Duration */}
               <Select value={duration} onValueChange={setDuration}>
                 <SelectTrigger className="w-full lg:w-[140px]">
                   <SelectValue placeholder="Duration" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">Any Duration</SelectItem>
-                  <SelectItem value="3-5">3-5 Days</SelectItem>
-                  <SelectItem value="6-8">6-8 Days</SelectItem>
-                  <SelectItem value="9+">9+ Days</SelectItem>
+                  <SelectItem value="1-3">1‑3 Days</SelectItem>
+                  <SelectItem value="4-7">4‑7 Days</SelectItem>
+                  <SelectItem value="8+">8+ Days</SelectItem>
                 </SelectContent>
               </Select>
 
-              <Select value={priceRange} onValueChange={setPriceRange}>
+              {/* Budget (Price) */}
+              <Select value={budgetRange} onValueChange={setBudgetRange}>
                 <SelectTrigger className="w-full lg:w-[150px]">
-                  <SelectValue placeholder="Price" />
+                  <SelectValue placeholder="Budget" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">Any Price</SelectItem>
+                  <SelectItem value="all">Any Budget</SelectItem>
                   <SelectItem value="under10k">Under ₹10,000</SelectItem>
-                  <SelectItem value="10k-20k">₹10,000 - ₹20,000</SelectItem>
+                  <SelectItem value="10k-20k">₹10,000‑₹20,000</SelectItem>
                   <SelectItem value="above20k">Above ₹20,000</SelectItem>
                 </SelectContent>
               </Select>
 
+              {/* Sort */}
               <Select value={sortBy} onValueChange={setSortBy}>
                 <SelectTrigger className="w-full lg:w-[140px]">
                   <SelectValue placeholder="Sort" />

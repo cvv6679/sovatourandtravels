@@ -102,9 +102,7 @@ const Blog = () => {
                           }}
                         />
                       ) : (
-                        <div className="w-full h-full bg-gradient-hero flex items-center justify-center">
-                          <span className="text-primary-foreground/60 text-sm">No image</span>
-                        </div>
+          <img src={"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"} alt="Default blog image" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                       )}
                     </div>
                   </Link>
