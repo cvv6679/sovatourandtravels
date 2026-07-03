@@ -31,7 +31,6 @@ const Header = () => {
     { href: "/", label: "Home" },
     { href: "/packages", label: "All Packages" },
     { href: "/tours-from-rampurhat", label: "Tours from Rampurhat" },
-    { href: "/routes", label: "All Destinations" },
     { href: "/packages?category=domestic", label: "Domestic Trips" },
     { href: "/packages?category=international", label: "International Trips" },
     { href: "/packages?category=pilgrimage", label: "Pilgrim Trips" },
@@ -39,6 +38,7 @@ const Header = () => {
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ];
+
 
   const isActive = (path: string) => {
     if (path.includes("?")) {
@@ -58,19 +58,17 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              className={`text-sm font-bold transition-colors hover:text-primary ${isActive(link.href) ? "text-primary" : "text-foreground"}`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          <Link
+            to="/"
+            className={`text-sm font-bold transition-colors hover:text-primary ${isActive("/") ? "text-primary" : "text-foreground"}`}
+          >
+            Home
+          </Link>
+
           {/* Packages Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger
-              className={`text-sm font-bold transition-colors hover:text-primary flex items-center gap-1 ${location.pathname === "/packages" ? "text-primary" : "text-foreground"}`}
+              className={`text-sm font-bold transition-colors hover:text-primary flex items-center gap-1 ${location.pathname === "/packages" || location.pathname === "/tours-from-rampurhat" ? "text-primary" : "text-foreground"}`}
             >
               Packages
               <ChevronDown className="w-4 h-4" />
@@ -117,6 +115,7 @@ const Header = () => {
             Contact
           </Link>
         </nav>
+
 
         {/* CTA Button */}
         <div className="hidden md:flex items-center gap-4">
