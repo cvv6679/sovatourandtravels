@@ -15,6 +15,8 @@ import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import DestinationsSection from "@/components/DestinationsSection";
+import TourMap from "@/components/TourMap";
+
 
 const Index = () => {
   const { data: featuredTours, isLoading: toursLoading } = useFeaturedTours();
@@ -259,6 +261,10 @@ const Index = () => {
       <div id="destinations">
         <DestinationsSection />
       </div>
+
+      {/* Interactive Tour Map */}
+      <TourMap />
+
 
       {/* Why Choose Us */}
       <section className="section-padding bg-background">
