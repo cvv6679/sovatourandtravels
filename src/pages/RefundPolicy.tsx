@@ -1,10 +1,17 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import SEOHead from "@/components/SEOHead";
 
 const RefundPolicy = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Refund & Cancellation Policy - Sova Tour & Travels"
+        description="Learn about our transparent refund and tour cancellation policy at Sova Tour & Travels."
+        ogUrl="https://sovatourandtravels.com/refund-policy"
+        canonical="https://sovatourandtravels.com/refund-policy"
+      />
       <Header />
       <WhatsAppButton />
 

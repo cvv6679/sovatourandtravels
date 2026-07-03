@@ -12,8 +12,36 @@ import SEOHead from "@/components/SEOHead";
        <SEOHead
          title="Contact Us - Sova Tour & Travels"
          description="Contact Sova Tour & Travels for custom tour quotes, inquiries, and bookings. Call +91 9474025173 or visit us at Rampurhat, West Bengal."
-         ogUrl="https://sovatourandtravels.lovable.app/contact"
-         canonical="https://sovatourandtravels.lovable.app/contact"
+         ogUrl="https://sovatourandtravels.com/contact"
+         canonical="https://sovatourandtravels.com/contact"
+         jsonLd={{
+           "@context": "https://schema.org",
+           "@graph": [
+             {
+               "@type": "ContactPage",
+               name: "Contact Us - Sova Tour & Travels",
+               description: "Contact Sova Tour & Travels for custom tour quotes, inquiries, and bookings.",
+               url: "https://sovatourandtravels.com/contact",
+             },
+             {
+               "@type": "BreadcrumbList",
+               itemListElement: [
+                 {
+                   "@type": "ListItem",
+                   position: 1,
+                   name: "Home",
+                   item: "https://sovatourandtravels.com",
+                 },
+                 {
+                   "@type": "ListItem",
+                   position: 2,
+                   name: "Contact Us",
+                   item: "https://sovatourandtravels.com/contact",
+                 },
+               ],
+             },
+           ],
+         }}
        />
        <Header />
        <WhatsAppButton />

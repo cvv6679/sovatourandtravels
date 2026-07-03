@@ -9,8 +9,13 @@ interface SEOHeadProps {
   ogUrl?: string;
   ogType?: string;
   canonical?: string;
-  jsonLd?: object;
+  jsonLd?: object | object[];
 }
+
+const cleanUrl = (url?: string) => {
+  if (!url) return undefined;
+  return url.replace(/https?:\/\/sovatourandtravels\.lovable\.app/g, "https://sovatourandtravels.com");
+};
 
 const SEOHead = ({
   title,
@@ -23,6 +28,10 @@ const SEOHead = ({
   canonical,
   jsonLd,
 }: SEOHeadProps) => {
+  const sanitizedOgUrl = cleanUrl(ogUrl);
+  const sanitizedCanonical = cleanUrl(canonical);
+  const sanitizedOgImage = cleanUrl(ogImage) || "https://sovatourandtravels.com/logo.PNG";
+
   useEffect(() => {
     document.title = title;
 
@@ -40,24 +49,24 @@ const SEOHead = ({
     setMeta("description", description);
     setMeta("og:title", ogTitle || title, true);
     setMeta("og:description", ogDescription || description, true);
-    setMeta("og:image", ogImage, true);
-    if (ogUrl) setMeta("og:url", ogUrl, true);
+    setMeta("og:image", sanitizedOgImage, true);
+    if (sanitizedOgUrl) setMeta("og:url", sanitizedOgUrl, true);
     setMeta("og:type", ogType, true);
     setMeta("og:site_name", "Sova Tour & Travels", true);
     setMeta("twitter:card", "summary_large_image");
     setMeta("twitter:title", ogTitle || title);
     setMeta("twitter:description", ogDescription || description);
-    setMeta("twitter:image", ogImage);
+    setMeta("twitter:image", sanitizedOgImage);
 
     // Canonical
     let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
-    if (canonical) {
+    if (sanitizedCanonical) {
       if (!link) {
         link = document.createElement("link");
         link.rel = "canonical";
         document.head.appendChild(link);
       }
-      link.href = canonical;
+      link.href = sanitizedCanonical;
     }
 
     // JSON-LD

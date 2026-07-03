@@ -1,10 +1,17 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import SEOHead from "@/components/SEOHead";
 
 const TermsConditions = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Terms & Conditions - Sova Tour & Travels"
+        description="Review the terms and conditions for booking tour packages and pilgrimage services with Sova Tour & Travels."
+        ogUrl="https://sovatourandtravels.com/terms-conditions"
+        canonical="https://sovatourandtravels.com/terms-conditions"
+      />
       <Header />
       <WhatsAppButton />
 

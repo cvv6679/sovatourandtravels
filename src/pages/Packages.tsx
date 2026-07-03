@@ -114,8 +114,36 @@ const Packages = () => {
       <SEOHead
         title={`${pageTitle} - Sova Tour & Travels`}
         description={`${pageDescription}. Book affordable tour packages from Rampurhat & Kolkata.`}
-        ogUrl={`https://sovatourandtravels.lovable.app/packages${categoryFilter ? `?category=${categoryFilter}` : ""}`}
-        canonical={`https://sovatourandtravels.lovable.app/packages${categoryFilter ? `?category=${categoryFilter}` : ""}`}
+        ogUrl={`https://sovatourandtravels.com/packages${categoryFilter ? `?category=${categoryFilter}` : ""}`}
+        canonical={`https://sovatourandtravels.com/packages${categoryFilter ? `?category=${categoryFilter}` : ""}`}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "CollectionPage",
+              name: `${pageTitle} - Sova Tour & Travels`,
+              description: pageDescription,
+              url: `https://sovatourandtravels.com/packages${categoryFilter ? `?category=${categoryFilter}` : ""}`,
+            },
+            {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://sovatourandtravels.com",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: pageTitle,
+                  item: `https://sovatourandtravels.com/packages${categoryFilter ? `?category=${categoryFilter}` : ""}`,
+                },
+              ],
+            },
+          ],
+        }}
       />
       <Header />
       <WhatsAppButton />

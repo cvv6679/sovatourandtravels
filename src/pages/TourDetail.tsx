@@ -55,25 +55,65 @@ const TourDetail = () => {
     { q: "What about travel insurance?", a: "Basic travel insurance is included in most packages. For comprehensive coverage, please inquire." },
   ];
 
-  const tourUrl = `https://sovatourandtravels.lovable.app/tour/${tour.slug}`;
+  const tourUrl = `https://sovatourandtravels.com/tour/${tour.slug}`;
   const tourSchema = {
     "@context": "https://schema.org",
-    "@type": "TouristTrip",
-    name: tour.title,
-    description: tour.overview || `${tour.title} - ${tour.duration_days} days tour from ${tour.start_city}`,
-    image: tour.hero_image_url || "",
-    touristType: tour.category,
-    offers: {
-      "@type": "Offer",
-      price: tour.discounted_price_inr,
-      priceCurrency: "INR",
-      availability: "https://schema.org/InStock",
-    },
-    provider: {
-      "@type": "TravelAgency",
-      name: "Sova Tour & Travels",
-      telephone: "+919474025173",
-    },
+    "@graph": [
+      {
+        "@type": "TouristTrip",
+        name: tour.title,
+        description: tour.overview || `${tour.title} - ${tour.duration_days} days tour from ${tour.start_city}`,
+        image: tour.hero_image_url || "",
+        touristType: tour.category,
+        offers: {
+          "@type": "Offer",
+          price: tour.discounted_price_inr,
+          priceCurrency: "INR",
+          availability: "https://schema.org/InStock",
+          url: tourUrl,
+        },
+        provider: {
+          "@type": "TravelAgency",
+          name: "Sova Tour & Travels",
+          url: "https://sovatourandtravels.com",
+          telephone: "+919474025173",
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://sovatourandtravels.com",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Tour Packages",
+            item: "https://sovatourandtravels.com/packages",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: tour.title,
+            item: tourUrl,
+          },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: faqs.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: f.a,
+          },
+        })),
+      },
+    ],
   };
 
   return (

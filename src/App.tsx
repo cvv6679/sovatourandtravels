@@ -15,6 +15,8 @@ import RefundPolicy from "./pages/RefundPolicy";
 import TermsConditions from "./pages/TermsConditions";
 import NotFound from "./pages/NotFound";
 import DestinationDetail from "./pages/DestinationDetail";
+import RampurhatToDestination from "./pages/RampurhatToDestination";
+import ToursFromRampurhatHub from "./pages/ToursFromRampurhatHub";
 
 // Admin pages
 import AdminLayout from "./pages/admin/AdminLayout";
@@ -46,9 +48,12 @@ const App = () => (
           {/* Redirect old /international route to new category filter */}
           <Route path="/international" element={<Navigate to="/packages?category=international" replace />} />
           <Route path="/destinations/:slug" element={<DestinationDetail />} />
+          <Route path="/tours/rampurhat-to-:destinationSlug" element={<RampurhatToDestination />} />
+          <Route path="/tours/:originSlug-to-:destinationSlug" element={<RampurhatToDestination />} />
+          <Route path="/tours-from-rampurhat" element={<ToursFromRampurhatHub />} />
+          <Route path="/tours-from-:originSlug" element={<ToursFromRampurhatHub />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/refund-policy" element={<RefundPolicy />} />
-          <Route path="/terms-conditions" element={<TermsConditions />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />
           
           {/* Admin routes */}

@@ -1,10 +1,17 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import SEOHead from "@/components/SEOHead";
 
 const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Privacy Policy - Sova Tour & Travels"
+        description="Read the Privacy Policy of Sova Tour & Travels regarding how we handle your booking and inquiry data."
+        ogUrl="https://sovatourandtravels.com/privacy-policy"
+        canonical="https://sovatourandtravels.com/privacy-policy"
+      />
       <Header />
       <WhatsAppButton />
 

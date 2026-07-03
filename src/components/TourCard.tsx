@@ -40,7 +40,10 @@ interface TourCardProps {
               {hero_image_url ? (
                 <img
                   src={hero_image_url}
-                  alt={title}
+                  alt={`${title} tour package from Rampurhat`}
+                  loading="lazy"
+                  width={400}
+                  height={300}
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                 />
               ) : (

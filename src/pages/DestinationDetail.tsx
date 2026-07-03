@@ -46,14 +46,35 @@ const DestinationDetail = () => {
       <SEOHead
         title={destination.seo_title || destination.name}
         description={destination.seo_description || destination.tagline}
-        ogUrl={`https://sovatourandtravels.lovable.app/destinations/${destination.slug}`}
-        canonical={`https://sovatourandtravels.lovable.app/destinations/${destination.slug}`}
+        ogUrl={`https://sovatourandtravels.com/destinations/${destination.slug}`}
+        canonical={`https://sovatourandtravels.com/destinations/${destination.slug}`}
         jsonLd={{
           "@context": "https://schema.org",
-          "@type": "TouristDestination",
-          name: destination.name,
-          description: destination.seo_description,
-          image: destination.hero_image,
+          "@graph": [
+            {
+              "@type": "TouristDestination",
+              name: destination.name,
+              description: destination.seo_description || destination.tagline,
+              image: destination.hero_image,
+            },
+            {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://sovatourandtravels.com",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: destination.name,
+                  item: `https://sovatourandtravels.com/destinations/${destination.slug}`,
+                },
+              ],
+            },
+          ],
         }}
       />
       <Header />

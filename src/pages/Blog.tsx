@@ -12,15 +12,37 @@ import { format } from "date-fns";
 const Blog = () => {
   const { data: posts, isLoading } = useBlogPosts();
 
-  const orgSchema = {
+  const blogSchema = {
     "@context": "https://schema.org",
-    "@type": "Blog",
-    name: "Sova Tour & Travels Blog",
-    url: "https://sovatourandtravels.lovable.app/blog",
-    publisher: {
-      "@type": "TravelAgency",
-      name: "Sova Tour & Travels",
-    },
+    "@graph": [
+      {
+        "@type": "Blog",
+        name: "Sova Tour & Travels Blog",
+        url: "https://sovatourandtravels.com/blog",
+        publisher: {
+          "@type": "TravelAgency",
+          name: "Sova Tour & Travels",
+          url: "https://sovatourandtravels.com",
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://sovatourandtravels.com",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Blog",
+            item: "https://sovatourandtravels.com/blog",
+          },
+        ],
+      },
+    ],
   };
 
   return (
@@ -28,9 +50,9 @@ const Blog = () => {
       <SEOHead
         title="Travel Blog - Sova Tour & Travels"
         description="Read travel guides, tips, and stories from Sova Tour & Travels. Discover the best destinations across India and beyond."
-        ogUrl="https://sovatourandtravels.lovable.app/blog"
-        canonical="https://sovatourandtravels.lovable.app/blog"
-        jsonLd={orgSchema}
+        ogUrl="https://sovatourandtravels.com/blog"
+        canonical="https://sovatourandtravels.com/blog"
+        jsonLd={blogSchema}
       />
       <Header />
       <WhatsAppButton />

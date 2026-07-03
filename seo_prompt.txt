@@ -1,0 +1,95 @@
+Act as a Senior Technical SEO Engineer and Full-Stack Web Developer. You have direct access to my codebase for sovatourandtravels.com, hosted on a self-managed Ubuntu VPS (Nginx), with source controlled via GitHub. I want you to implement — not just recommend — a complete technical SEO overhaul directly in the codebase.
+
+Business Context
+
+
+Business: Sova Tour & Travels — tour and travel agency
+Physical location: Rampurhat, Birbhum district, West Bengal, India
+Target audience: Rampurhat, Birbhum district, and Kolkata region
+Offering: Domestic and international tour packages to numerous destinations (e.g., Kashmir, Darjeeling, and others — scan the codebase/CMS to enumerate the full destination list)
+Goal: Rank at the top for searches like "Rampurhat to [Destination] tour package" across every destination we sell, and build the on-site foundation that makes rich search features (sitelinks, local pack, review stars) more likely to appear.
+
+
+Important framing before you start
+
+Google sitelinks are algorithmically generated — no developer or SEO technique can directly force them. They appear when a site has strong internal structure, clear hierarchy, sufficient authority, and (usually) get triggered on branded searches. Do NOT implement anything that resembles "fake" or "hidden" sitelinks-style markup — that reads as manipulative to Google. Instead, build the structural and authority signals that make sitelinks and rich results a natural outcome. Be explicit in your output about what's guaranteed (indexing, structured data eligibility) vs. probabilistic (rankings, sitelinks, review stars).
+
+Phase 1 — Site Audit
+
+
+Crawl the current site structure and produce a sitemap tree of all existing pages/templates.
+Audit current <title>, meta description, heading hierarchy (H1–H3), image alt text, and canonical tags on every template.
+Check current robots.txt and sitemap.xml (or lack thereof) and validate against Google Search Console requirements.
+Report Core Web Vitals issues (LCP, CLS, INP) based on current asset loading (images, fonts, JS).
+Check for existing structured data (JSON-LD) — report what exists vs. what's missing.
+
+
+Phase 2 — Programmatic Destination Page Architecture
+
+This is the core of ranking for "Rampurhat to [Destination]" style queries.
+
+
+Design a scalable page template/route structure such as:
+/tours/rampurhat-to-[destination-slug]/
+Each page should be a real, unique, useful page — not a thin doorway page. Include: itinerary summary, duration, inclusions/exclusions, best time to visit, pricing tier (if available), local pickup point (Rampurhat), and a genuine FAQ block.
+Build this as a data-driven template: one JSON/DB-backed content model per destination, rendered through a single reusable template, so adding a new destination is a content-entry task, not a dev task.
+Auto-generate unique <title> and meta description per destination page using a pattern like:
+Rampurhat to [Destination] Tour Package | Sova Tour & Travels
+Implement breadcrumb navigation on every destination page: Home > Tour Packages > [Region] > [Destination].
+Build an internal linking hub page (/tour-packages/) that links out to every destination page, grouped by region (e.g., North India, Northeast, South India, International). This hub is what gives Google the clean hierarchy it needs to consider sitelinks.
+
+
+Phase 3 — Structured Data (JSON-LD)
+
+Implement and validate (via Google's Rich Results Test) the following schema types:
+
+
+TravelAgency / LocalBusiness schema on the homepage — include name, address (Rampurhat, Birbhum, West Bengal), geo coordinates, telephone, openingHours, areaServed (Rampurhat, Birbhum, Kolkata).
+SiteNavigationElement schema reflecting the main nav — this is one of the legitimate signals tied to sitelink eligibility.
+TouristTrip or Product-style schema on each destination page (destination, duration, price if available, provider).
+BreadcrumbList schema matching the breadcrumb UI on every page.
+FAQPage schema on destination pages that have genuine FAQ content.
+Organization schema on the homepage with sameAs links to verified social profiles (helps entity disambiguation for Knowledge Panel eligibility, which is a separate but related feature to sitelinks).
+Do NOT implement SearchAction/sitelinks search box schema unless the site actually has a working internal search endpoint — implement the internal search feature first if it doesn't exist, then add the schema.
+
+
+Phase 4 — Local SEO Signals
+
+
+Ensure NAP (Name, Address, Phone) is identical across the site footer, contact page, and schema — and matches Google Business Profile exactly.
+Build a dedicated, keyword-rich but genuinely useful "About/Location" page describing service to Rampurhat, Birbhum, and Kolkata.
+Add a Google Maps embed on the contact page with the correct business location.
+Set up (or advise me to set up manually, since this happens outside code) Google Business Profile categories, service areas, and posts tied to top destinations.
+
+
+Phase 5 — Technical Foundations
+
+
+Generate a clean sitemap.xml (auto-updating as destination pages are added) and submit-ready robots.txt.
+Implement canonical tags correctly across all pages to avoid duplicate content across similar destination pages.
+Optimize images (WebP conversion, lazy loading, descriptive alt text following the pattern "Rampurhat to [Destination] tour — [specific scene]").
+Implement mobile responsiveness and Core Web Vitals fixes identified in Phase 1.
+Set up 301 redirects for any restructured URLs so we don't lose existing indexing.
+Add hreflang tags only if/when multi-language versions exist — otherwise skip.
+
+
+Phase 6 — Content & Authority Plan (advisory, not code)
+
+Outside the codebase, outline a realistic 90-day plan for:
+
+
+A blog/guide section (e.g., "Best Time to Visit Darjeeling from Rampurhat") targeting long-tail queries that feed into the destination pages
+Local backlink targets (Birbhum/West Bengal tourism directories, local news, chambers of commerce)
+Review generation strategy (Google Business Profile reviews are one of the strongest local ranking + rich-result signals)
+
+
+Deliverables I want from you
+
+
+Actual code changes committed to the repo (templates, schema, sitemap, robots.txt) — not just a written report.
+A markdown summary of every change made, file by file.
+A clearly labeled list of what's implemented (guaranteed technical correctness) vs. what depends on Google's algorithm and time (rankings, sitelinks, rich results).
+A checklist of manual steps I still need to do outside the codebase (GSC submission, Google Business Profile setup, backlink outreach).
+
+
+Work through these phases in order. Show me the plan for Phase 1 and 2 before writing code, so I can confirm the destination page URL structure before you scale it across all destinations.

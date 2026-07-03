@@ -18,6 +18,7 @@ const Header = () => {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/packages", label: "All Packages" },
+    { href: "/tours-from-rampurhat", label: "Tours from Rampurhat" },
     { href: "/packages?category=domestic", label: "Domestic Trips" },
     { href: "/packages?category=international", label: "International Trips" },
     { href: "/packages?category=pilgrimage", label: "Pilgrim Trips" },
@@ -64,6 +65,11 @@ const Header = () => {
                 <DropdownMenuItem asChild>
                   <Link to="/packages" className="font-medium">
                     All Packages
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/tours-from-rampurhat" className="font-semibold text-primary">
+                    ⚡ Tours from Rampurhat
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>

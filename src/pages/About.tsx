@@ -40,11 +40,39 @@ const teamMembers = [
    return (
      <div className="min-h-screen bg-background">
        <SEOHead
-         title="About Us - Sova Tour & Travels"
-         description="Learn about Sova Tour & Travels, your trusted travel partner from Rampurhat for budget-friendly domestic and international tours."
-         ogUrl="https://sovatourandtravels.lovable.app/about"
-         canonical="https://sovatourandtravels.lovable.app/about"
-       />
+        title="About Us - Sova Tour & Travels"
+        description="Learn about Sova Tour & Travels, your trusted travel agency headquartered in Rampurhat, Birbhum, and serving Kolkata & West Bengal for budget tours and pilgrimages."
+        ogUrl="https://sovatourandtravels.com/about"
+        canonical="https://sovatourandtravels.com/about"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "AboutPage",
+              name: "About Us - Sova Tour & Travels",
+              description: "Learn about Sova Tour & Travels, headquartered in Rampurhat, Birbhum.",
+              url: "https://sovatourandtravels.com/about",
+            },
+            {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://sovatourandtravels.com",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "About Us",
+                  item: "https://sovatourandtravels.com/about",
+                },
+              ],
+            },
+          ],
+        }}
+      />
        <Header />
        <WhatsAppButton />
  
@@ -59,7 +87,7 @@ const teamMembers = [
                About Sova Tours
              </h1>
              <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto">
-               Your trusted travel partner from the heart of Kolkata
+               Your trusted physical travel agency serving Rampurhat, Birbhum & Kolkata
              </p>
            </motion.div>
          </div>
@@ -88,20 +116,14 @@ const teamMembers = [
                className="prose prose-lg max-w-none text-muted-foreground"
              >
                <p className="mb-6">
-                 <strong className="text-foreground">Sova Tours and Travels</strong> was born from a simple belief: 
-                 everyone deserves to explore the incredible diversity of India, regardless of their budget. 
-                 Based in the cultural capital of Kolkata, we've been helping travelers discover the magic of 
-                 our beautiful country since our inception.
+                 <strong className="text-foreground">Sova Tour & Travels</strong> was founded with a clear vision: 
+                 making premium, memorable travel experiences affordable and accessible for every family and traveler across West Bengal. Headquartered at MNK Road, Bharsala More in <strong className="text-foreground">Rampurhat, Birbhum district (731224)</strong>, with strong operational networks throughout <strong className="text-foreground">Kolkata</strong>, we serve thousands of satisfied travelers every year.
                </p>
                <p className="mb-6">
-                 From the snow-capped peaks of Kashmir and Ladakh to the serene backwaters of Sundarban, 
-                 from the spiritual banks of Rishikesh to the golden beaches of Puri – we curate experiences 
-                 that create lasting memories without breaking the bank.
+                 Whether you are departing from Rampurhat Junction (RPH) for scenic mountain retreats in Darjeeling, Gangtok, and Kashmir, boarding flights from Kolkata Airport (CCU) for international vacations in Dubai, Thailand, and Nepal, or undertaking sacred pilgrimage journeys (Umrah & Hajj to Mecca and Medina), we manage every detail end-to-end.
                </p>
                <p>
-                 What sets us apart is our deep understanding of the local landscape, trusted partnerships 
-                 with hotels and transport providers across India, and our commitment to transparent pricing. 
-                 No hidden costs, no surprises – just honest, affordable travel.
+                 Our local physical presence in Rampurhat ensures personal accountability, direct consultation, and 24/7 dedicated support. We partner directly with verified hotels, experienced local drivers, and certified tour guides to provide honest, transparent pricing with zero hidden costs.
                </p>
              </motion.div>
            </div>

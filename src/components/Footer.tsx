@@ -50,7 +50,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/international" className="text-background/70 hover:text-secondary text-sm transition-colors">
+                <Link to="/tours-from-rampurhat" className="text-secondary font-semibold hover:text-white text-sm transition-colors">
+                  ⚡ Tours from Rampurhat
+                </Link>
+              </li>
+              <li>
+                <Link to="/packages?category=international" className="text-background/70 hover:text-secondary text-sm transition-colors">
                   International Trips
                 </Link>
               </li>
@@ -77,28 +82,28 @@ const Footer = () => {
             <h4 className="font-display font-semibold text-background mb-4">Popular Destinations</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/tour/kashmir-paradise-tour" className="text-background/70 hover:text-secondary text-sm transition-colors">
-                  Kashmir Tours
+                <Link to="/tours/rampurhat-to-kashmir" className="text-background/70 hover:text-secondary text-sm transition-colors">
+                  Rampurhat to Kashmir
                 </Link>
               </li>
               <li>
-                <Link to="/tour/darjeeling-queen-of-hills" className="text-background/70 hover:text-secondary text-sm transition-colors">
-                  Darjeeling Tours
+                <Link to="/tours/rampurhat-to-darjeeling" className="text-background/70 hover:text-secondary text-sm transition-colors">
+                  Rampurhat to Darjeeling
                 </Link>
               </li>
               <li>
-                <Link to="/tour/ladakh-adventure-expedition" className="text-background/70 hover:text-secondary text-sm transition-colors">
-                  Ladakh Adventures
+                <Link to="/tours/rampurhat-to-ladakh" className="text-background/70 hover:text-secondary text-sm transition-colors">
+                  Rampurhat to Ladakh
                 </Link>
               </li>
               <li>
-                <Link to="/tour/shimla-manali-adventure" className="text-background/70 hover:text-secondary text-sm transition-colors">
-                  Shimla Manali
+                <Link to="/tours/rampurhat-to-umrah" className="text-background/70 hover:text-secondary text-sm transition-colors">
+                  Rampurhat to Umrah
                 </Link>
               </li>
               <li>
-                <Link to="/international" className="text-background/70 hover:text-secondary text-sm transition-colors">
-                  International Trips
+                <Link to="/tours-from-rampurhat" className="text-secondary hover:text-white text-sm font-semibold transition-colors">
+                  View All 15+ Routes →
                 </Link>
               </li>
             </ul>

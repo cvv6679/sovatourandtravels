@@ -58,24 +58,39 @@ const Index = () => {
       <SEOHead
         title="Sova Tour & Travels - Budget Tours from Rampurhat & Kolkata"
         description="Explore India with Sova Tour & Travels. Budget-friendly domestic, international & pilgrimage tour packages from Rampurhat & Kolkata. Kashmir, Ladakh, Darjeeling & more."
-        ogUrl="https://sovatourandtravels.lovable.app"
-        canonical="https://sovatourandtravels.lovable.app"
+        ogUrl="https://sovatourandtravels.com"
+        canonical="https://sovatourandtravels.com"
         jsonLd={{
           "@context": "https://schema.org",
           "@graph": [
             {
               "@type": "Organization",
+              "@id": "https://sovatourandtravels.com/#organization",
               name: "Sova Tour & Travels",
-              url: "https://sovatourandtravels.lovable.app",
-              logo: "https://sovatourandtravels.lovable.app/logo.PNG",
-              contactPoint: { "@type": "ContactPoint", telephone: "+919474025173", contactType: "customer service" },
+              url: "https://sovatourandtravels.com",
+              logo: "https://sovatourandtravels.com/logo.PNG",
+              sameAs: [
+                "https://facebook.com",
+                "https://instagram.com",
+                "https://twitter.com"
+              ],
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+919474025173",
+                contactType: "customer service",
+                areaServed: ["IN"],
+                availableLanguage: ["English", "Bengali", "Hindi"],
+              },
             },
             {
-              "@type": "TravelAgency",
+              "@type": ["TravelAgency", "LocalBusiness"],
+              "@id": "https://sovatourandtravels.com/#localbusiness",
               name: "Sova Tour & Travels",
-              image: "https://sovatourandtravels.lovable.app/logo.PNG",
+              url: "https://sovatourandtravels.com",
+              image: "https://sovatourandtravels.com/logo.PNG",
               telephone: "+919474025173",
               email: "sovainternetcafe@gmail.com",
+              priceRange: "₹₹",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "MNK Road, Bharsala More",
@@ -84,7 +99,46 @@ const Index = () => {
                 postalCode: "731224",
                 addressCountry: "IN",
               },
-              priceRange: "₹₹",
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 24.17555898,
+                longitude: 87.7821749,
+              },
+              openingHoursSpecification: [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                    "Sunday",
+                  ],
+                  opens: "09:00",
+                  closes: "21:00",
+                },
+              ],
+              areaServed: [
+                { "@type": "City", name: "Rampurhat" },
+                { "@type": "AdministrativeArea", name: "Birbhum" },
+                { "@type": "City", name: "Kolkata" },
+                { "@type": "State", name: "West Bengal" },
+              ],
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "@id": "https://sovatourandtravels.com/#navigation",
+              name: ["Home", "Tour Packages", "Tours from Rampurhat", "Blog", "About Us", "Contact Us"],
+              url: [
+                "https://sovatourandtravels.com",
+                "https://sovatourandtravels.com/packages",
+                "https://sovatourandtravels.com/tours-from-rampurhat",
+                "https://sovatourandtravels.com/blog",
+                "https://sovatourandtravels.com/about",
+                "https://sovatourandtravels.com/contact",
+              ],
             },
           ],
         }}
@@ -97,7 +151,9 @@ const Index = () => {
         <div className="absolute inset-0">
           <img
             src={heroImage}
-            alt="Beautiful Kashmir landscape"
+            alt="Beautiful Kashmir landscape tour package from Rampurhat"
+            fetchPriority="high"
+            loading="eager"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/50 to-transparent" />
